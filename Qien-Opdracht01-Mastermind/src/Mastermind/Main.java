@@ -6,11 +6,11 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		String runNewGame = "";
+		boolean runNewGame = true;
 		
-		while (!runNewGame.equals("q")) {
+		while (runNewGame) {
 			GameRunner newGame = new GameRunner();
-			runNewGame = newGame.newGame().toLowerCase();
+			runNewGame = newGame.newGame();
 		}
 		
 		System.out.println("\nQuitting Mastermind, thanks for playing!");

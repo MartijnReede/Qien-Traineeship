@@ -31,10 +31,9 @@ public class GameRunner {
 		feedbackOnGuessGenerator = new FeedbackOnGuessGenerator();
 	}
 	
-	public String newGame() {
+	public boolean newGame() {
 		
 		//SHOWING MAIN MENU AND GAME INSTRUCTIONS
-		
 		System.out.print(instructions.getInstructions());
 		input = scanner.nextLine().toLowerCase();
 		
@@ -44,7 +43,6 @@ public class GameRunner {
 		}
 		
 		// CHECKS IF THE PLAYER REALY WANTS TO QUIT MASTERMIND
-		
 		if (input.equals("q")) {
 			
 			System.out.print(shortMessages.getAreYouSureToQuit());
@@ -55,21 +53,20 @@ public class GameRunner {
 				input = scanner.nextLine().toLowerCase();
 			}
 			
-			if (input.equals("y")) return "q";
-			else return "";
+			if (input.equals("y")) return false;
+			else return true;
 			
 		} else {
 			
 			// STARTS A NEW GAME
-			
-			System.out.println("\n**********************************************************");
-			System.out.println("******************** Loading new game ********************");
+			System.out.println("\n**********************************************************************");
+			System.out.println("************************** Loading new game **************************");
 			sleep();
-			System.out.println("***************** Generating secret code *****************");
+			System.out.println("*********************** Generating secret code ***********************");
 			code = secretCodeGenerator.generateSecretCode();
 			sleep();
-			System.out.println("************************ START!!! ************************");
-			System.out.println("**********************************************************\n\n");
+			System.out.println("****************************** START!!! ******************************");
+			System.out.println("**********************************************************************\n\n");
 			
 			System.out.print(shortMessages.getGameplayInputInstructions());
 			
@@ -84,7 +81,6 @@ public class GameRunner {
 				}
 				
 				// WHEN PLAYER CHOOSES TO QUIT THE CURRENT GAME
-				
 				if (input.equals("q")) {
 					System.out.print(shortMessages.getAreYouSureToQuitCurrentGame());
 					input = scanner.nextLine().toLowerCase();
@@ -94,36 +90,32 @@ public class GameRunner {
 						input = scanner.nextLine().toLowerCase();
 					}
 					
-					if (input.equals("y")) return "";
+					if (input.equals("y")) return true;
 					else System.out.println("\nThe game continues...\n");
 				
 				// WHEN PLAYER TAKES A GUESS
-					
 				} else {
 					
 					amountOfGuesses ++;
 					
 					// WHEN PLAYER WINS
-					
 					if (code.equals(input)) {
 						System.out.println(shortMessages.getWinningMessage(amountOfGuesses));
 						input = scanner.nextLine();
-						return "";
+						return true;
 					
 					// WHEN PLAYER DOESN'T WIN
-					
 					} else {
 						
 						int[] feedback = feedbackOnGuessGenerator.getFeedbackOnGuess(input, code);
 						System.out.println("\nAmount of guesses: " + amountOfGuesses);
-						System.out.println("Amount of correct letters on the correct position: " + feedback[0] + ".");
-						System.out.println("Amount of correct letters on the wrong position:   " + feedback[1] + ".\n");
-
+						System.out.println("Amount of correct letters on the right spot: " + feedback[0] + ".");
+						System.out.println("Amount of correct letters on the wrong spot:   " + feedback[1] + ".\n");
 					}
 				}
 			}
 		}
-		return "";
+		return true;
 	}
 	
 	public void sleep() {
