@@ -1,0 +1,81 @@
+MAAK VAN ALLES WAT IRL EEN OBJECT ZOU KUNNEN ZIJN EEN OBJECT:
+
+In één van mijn opdrachten heb ik geen aparte klasse aangemaakt voor de spelers omdat deze
+slechts uit één String bestaan (de naam van de speler). Het is "good practice" om van alles
+wat in de echte wereld een object zou kunnen zijn een object te maken. Zo hou je het 
+overzichtelijk.
+
+SPELBORD IN VIER OP EEN RIJ:
+
+In vier op een rij heb ik een methode geschreven die een leeg spelbord genereerd. In een andere
+klasse heb ik een methode geschreven die het spelbord uitprint. Het was beter geweest als ik
+in de constructor al het spelbord aan een variabele had toegewezen in de spelbord klasse. 
+
+Het printen en updaten van het spelbord zou ik dan ook in deze klasse kunnen verwerken i.p.v.
+in de Gamerunner klasse. 
+
+INVOER OBJECT MAKEN:
+
+In alledrie de opdrachten is er veel sprake van herhaling. De invoer wordt telkens gecontroleerd
+in een aparte klasse, maar in de gamerunner klasse schrijf ik telkens dezelfde regels code opnieuw
+en opnieuw (meerdere while-loops). Deze had ik beter in de invoercontrole klasse kunnen verwerken. 
+
+MAAK MEER GEBRUIK VAN SWITCH:
+
+In de Ganzenbord opdracht maak ik soms gebruik van hele grote if-statements. Deze zou ik kunnen
+vereenvoudigen met bijvoorbeeld een switch statement: 
+
+switch (startpositie) {
+
+	case 10:
+	case 20:
+	case 30:
+	case 40:
+		System.out.println("Doe iets met het spel...");
+		break;
+}
+
+In alle gevallen (10, 20, 30, 40) wordt nu "Doe iets met het spel..." geprint. 
+
+Dat is mooier dan bijvoorbeeld:
+
+if (startpositie == 10 || startpositie == 20 || startpositie == 30 || startpositie == 40) {
+	System.out.println("Doe iets met het spel....");
+}
+
+MAAK GEEN GEBRUIK VAN ONNODIGE BOOLEANS
+
+In een aantal opdrachten heb ik bijvoorbeeld gedaan: 
+
+public boolean checkThis(){
+	boolean IsOk;
+	
+	if (isOk) return true;
+	else return false;
+}
+
+Dit is niet nodig, ik kan gewoon doen:
+
+publc boolean checkThis(){
+	boolean isOk;
+
+	return isOk;
+}
+
+MAAK NIET ONNODIGE GEBRUIK VAN HET THIS KEYWORD:
+
+This gebruik je niet als er geen variabele van dezelfde naam in de constructor staan.
+
+De goede manier: 
+
+public Cat(String catName){
+	this.catName = catName;
+}
+
+De slechte manier:
+
+public Cat (){
+	this. catname = "harry";
+}
+
+Bij de tweede constructor is het this keyword overbodig. 
