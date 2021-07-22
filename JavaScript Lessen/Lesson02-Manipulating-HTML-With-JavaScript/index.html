@@ -1,0 +1,21 @@
+
+<!--
+In tegenstelling tot in de vorige les importeren we de JavaScript code hier bovenaan de file.
+Dit is mogelijk gemaakt door de keyword "defer". We zouden een error krijgen als we dit niet
+zouden typen. Waarom? Omdat er in de JavaScript file gerefereerd wordt aan de id's: par en button.
+Deze id's zijn op het moment van inladen nog helemaal niet bekend (omdat de code van boven
+naar beneden gelezen wordt).
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulating HTML with JavaScript</title>
+  <script defer src="jsFile.js"></script>
+</head>
+<body>
+  <p id="par">Click the button to confirm your order..</p>
+  <button id="button">Click me!</button>
+</body>
+</html>
