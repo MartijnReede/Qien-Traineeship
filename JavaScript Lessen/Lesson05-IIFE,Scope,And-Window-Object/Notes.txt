@@ -1,0 +1,30 @@
+Als we een variabele aanmaken wordt deze toegevoegd aan het "window object".
+Dit wordt ook wel de "global scope" genoemd. Variabelen in de global scope zijn overal
+in onze code toegankelijk. Dit willen we niet altijd omdat dit voor conflicten kan zorgen,
+vooral als je een wat grotere applicatie maakt.
+
+We willen dus liever geen variabelen aanmaken in de global scope, maar hoe doen we dat?
+Dit kunnen we doen door het aanmaken van een variabele te verwerken in een functie.
+Als we dit doen is de variabele onderdeel van een nieuwe scope, niet van de global scope.
+
+
+Hoe maak je een functie:
+
+(function() {
+
+  Hier alle code.
+
+}) ();
+
+De code hierboven wordt ook wel een "IIFE" genoemd. Een Immediately invoked function expression.
+
+
+BELANGRIJK:
+( function() {
+  age = 50;
+}) ();
+
+Als we een variabele declareren zoals hierboven (zonder de var-keyword) wordt de variabele nog steeds
+toegevoegd aan het window object. Dit is omdat JS eerst kijkt binnen de functie of het de declaratie
+daar kan vinden. Als dit niet gevonden wordt, zal de code verder kijken in de bovenliggende scope,
+in dit geval is dat het window object (de global scope).
