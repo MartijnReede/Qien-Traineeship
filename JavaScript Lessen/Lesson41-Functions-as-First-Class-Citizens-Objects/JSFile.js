@@ -6,7 +6,6 @@
 */
 
 {
-
   let myArray = [plus];
 
   function plus(a, b) {
@@ -17,5 +16,4 @@
 
   console.log(plus.description);
   console.log(myArray[0](1,2));
-
 }
