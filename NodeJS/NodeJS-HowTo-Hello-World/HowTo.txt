@@ -1,0 +1,9 @@
+Hoe maken we een NodeJS project aan? 
+
+1. Download nodeJS en installeer het. Je kunt checken welke versie je hebt in de cmd d.m.v. node -v.
+2. In Visual Studio Code zoeken we een folder uit die leeg is. 
+3. We maken een JavaScript file aan. Voor nu noemen we die test.js.
+4. Om de kijken of alles werkt kunnen we een console.log maken met "Hello World".
+5. Vervolgens openen we de cmd van de computer, gaan naar de juiste folder d.m.v. cd ... etc.
+6. Om de applicatie te starten typen we in: node test.js.
+7. Er verschijnt Hello World in de console, de applicatie werkt!

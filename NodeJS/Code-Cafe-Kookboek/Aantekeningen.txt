@@ -1,0 +1,50 @@
+---- NODEJS EN DE OPDRACHT ----
+
+We gaan een kookboek maken met JavaScript, dit gaan we draaien met NodeJS.
+Met NodeJS kan JavaScript gedraaid worden buiten de browser. 
+Sinds dit kan, kan er met JavaScript ook een back-end geschreven worden. 
+
+---- NPM ----
+
+NPM staat voor Node-Package-Manager. Die packages (oftewel tools) kunnen
+indien nodig door de NPM worden geinstalleerd en de NPM beschikt over
+een interface om ze te bedienen. 
+
+Zo'n package is code wat andere mensen geschreven hebben die wij gewoon
+kunnen gebruiken. 
+
+---- EXPRESS ----
+
+Express is zo'n pakket, hiermee kunnen we heel makkelijk een web-server op-
+zetten. Express gaan we gebruiken in deze opdracht.
+
+Express binnenhalen is heel eenvoudig, je gaat naar de map van je project in
+de cdm, en type vervolgens npm install express. Express zal nu geinstalleerd
+worden. 
+
+---- EXPRESS IN CODE GEBRUIKEN ----
+
+Om express in onze code te gebruiken moeten we onze server opzetten. Dit 
+doen we d.m.v. de onderstaande code: 
+
+//Hiermee halen we express binnen zodat we het kunnen gebruiken.
+const express = require('express');                
+
+//Met PORT stellen we in op welke port onze app gaat luisteren.
+const PORT = 6000;                                 
+
+//Door deze methode aan te roepen instantieren we een server. 
+const app = express();
+
+//Dit is middle-ware. Dit zorgt ervoor dat als er een aanvraag binnenkomt, er
+//eerst wordt gekeken of er JSON binnenkomt. 
+app.use(express.json());
+
+//Dit start de server op. Deze moeten we een poort megeven. De functie die we
+//meegeven is een callback function. Wanneer de server is opgestart zal dit worden
+//uitgevoerd. 
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}.`);
+});
+
+
