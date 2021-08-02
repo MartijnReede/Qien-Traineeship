@@ -47,4 +47,28 @@ app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}.`);
 });
 
+---- MAPPINGS ----
 
+1. GET:
+    Get-mapping. We kunnen een endpoint aanmaken d.m.v. deze code:
+    
+    app.get('/', (req, res) => {
+        res.status(200).json({status: "server running"});
+    });
+
+    Hiermee sturen we een stukje JSON terug. Dit is gewoon het endpoint van
+    http://localhost8080/
+
+2. PUT:
+
+
+3. PATCH:
+
+
+4. DELETE:
+
+
+---- SQLITE3 ----
+
+Dit is de database die we gaan gebruiken. Is lightweight en slaat alle data op
+in een bestandje. Prima om dit mee te oefenen. SQLITE3 werkt ook helemaal op SQL.
