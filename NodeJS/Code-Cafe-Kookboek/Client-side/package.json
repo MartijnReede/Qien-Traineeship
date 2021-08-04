@@ -1,0 +1,20 @@
+{
+  "name": "client-side",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "bin": {
+    "recept": "./app.js"
+  },
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "got": "^11.8.2",
+    "table": "^6.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MartijnReede",
+  "license": "ISC"
+}

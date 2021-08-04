@@ -49,7 +49,9 @@ app.listen(PORT, () => {
 
 ---- MAPPINGS ----
 
-1. GET:
+Is bijna hetzelfde als met Spring Boot.
+
+1. READ / GET:
     Get-mapping. We kunnen een endpoint aanmaken d.m.v. deze code:
     
     app.get('/', (req, res) => {
@@ -59,16 +61,153 @@ app.listen(PORT, () => {
     Hiermee sturen we een stukje JSON terug. Dit is gewoon het endpoint van
     http://localhost8080/
 
-2. PUT:
+2. CREATE / POST:
 
+    Zie code.
 
-3. PATCH:
+3. UPDATE / PATCH:
 
+    Zie code.
 
-4. DELETE:
+4. DELETE / DELETE:
 
+    Zie code.
 
 ---- SQLITE3 ----
 
 Dit is de database die we gaan gebruiken. Is lightweight en slaat alle data op
 in een bestandje. Prima om dit mee te oefenen. SQLITE3 werkt ook helemaal op SQL.
+
+Om deze database in te stellen maken we ongeveer zo´n zelfde bestandje aan als met 
+express. Zie onderstaande code:
+
+//Required sqlite3 en zet de instellingen op verbose. Dit betekend dat we feedback krijgen
+//of bepaalde handelingen goed of juist niet goed zijn uitgevoerd. 
+const sqlite3 = require('sqlite3').verbose();
+
+//Dit maakt een instantie van de database. Ook maak het een nieuw bestandje aan en
+//een nieuwe tafel, maar alleen als deze nog niet bestaan!
+const db = new sqlite3.Database("db.db", () => {
+  db.run('CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, directions TEXT)');
+  console.log("Database created");  
+});
+
+
+//Met module.exports = db; kunnen we d.m.v. require in een andere file de instantie 
+//db binnenhalen. Als we meer dingen zouden willen exporteren dan zouden we dit kunnen
+//doen door een object aan te maken met meerdere functies of variabelen daarin. 
+module.exports = db;
+
+---- JSON OBJECT MAKEN ----
+
+Een JSON object maken in JavaScript doe je hetzelfde als hoe je een ander gewoon object
+zal maken. Het is wel belangrijk om te noemen dat er altijd sprake is van een key, gevolgd
+door een value. 
+
+let jsonObj = {
+    id: 1, --> deze hoeven we  straks in onze app niet aan te geven i.v.m. auto increment. 
+    name: "Pork Gyros",
+    directions: "Pork in grill"
+}
+
+
+Als we een JSON object willen posten schrijven we deze op een andere manier namelijk:
+
+{
+    "id" : "1",
+    "name": "Test gerecht.",
+    "directions": "Het gaat lekker smaken."
+}
+
+Alles, ook getallen moeten tussen aanhalingstekens. 
+
+---- POST REQUEST VERSTUREN ZONDER CLIENT PORTAL ----
+
+Als we onze database alvast een beetje willen vullen zonder dat we het client gedeelte
+van onze app hebben gemaakt. Kunnen we hiervoor een applicatie of website gebruiken. 
+Als we iets willen installeren op onze pc kunnen we hiervoor POSTMAN gebruiken, voor nu 
+gebruiken we gewoon even een web-versie genaamd REQBIN. 
+
+Vul de url in die gekoppeld staat aan de post-request. In ons geval is dat dit:
+
+app.post("./api/recipe", (req, res) => {
+
+    //Data uit het verzoek halen (JSON object).
+    let data = {
+        name: req.body.name,
+        directions: req.body,directions
+    };
+});
+
+De URL die wij in reqbin moeten invullen is localhost:8080/api/recipe/
+
+
+---- CLIENT-SIDE VS / SERVER-SIDE ----
+
+In deze opdracht maken we twee verschillende mappen aan. Namelijk de client-side en de 
+server-side map. In de clien side map, waar we onze applicatie gaan maken moeten we wel
+eerst een package.json file genereren. Dit kunnen we doen d.m.v. npm init in de cmd. 
+
+Het onderstaande is dan gegenereerd:
+
+{
+  "name": "client-side",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "enquirer": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MartijnReede",
+  "license": "ISC"
+}
+
+We moeten een aantal dingen aanpassen namelijk:
+main: dit staat by default ingesteld op index.js, maar onze main file heet app.js.
+Dit passen we dus aan. 
+
+Onder main moeten we nog iets toevoegen namekijk (vergeet de , niet):
+"bin": {
+    "recept": "./app.js"
+},
+
+Met bin hebben we gezegd dat we d.m.v. app.js een bin willen maken. Bin staat voor
+binary oftewel een programmaatje. En dat we dat recept willen noemen. Als we dan
+recept invoeren, dan willen we dat app.js geopend wordt. 
+
+Resultaat:
+
+{
+  "name": "client-side",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "bin": {
+    "recept": "./app.js"
+  },
+  "dependencies": {
+    "enquirer": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MartijnReede",
+  "license": "ISC"
+}
+
+Vervolgens openen we de cmd-line en gaan we naar de client map. Vervolgens typen we in: npm link. 
+Dit zal ervoor zorgen dat wij overal recept in kunnen typen en dat app.js gaat werken. 
+
+---- CONTACT MAKEN TUSSEN TWEE APPLICATIES ----
+
+Om contact te maken met de client moet de server natuurlijk wel eerst aan staan. Dit doe ik op de cmd-line
+in wondows PowerShell voer ik vervolgens de commando's in. Je doet dan niet node app.js maar:
+
+node ./app.js <commando>.
+
+
