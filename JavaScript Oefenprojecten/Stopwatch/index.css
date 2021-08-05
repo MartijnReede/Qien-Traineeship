@@ -1,0 +1,35 @@
+body {
+    background-color: lightgrey;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+h1{
+ text-align: center;
+}
+
+.watch{
+    min-width: 150px;
+    min-height: 150px;
+    max-width:  200px;
+    max-height: 200px;
+
+    margin-left: auto;
+    margin-right: auto; 
+    border-style: solid;
+    border-radius: 50%  
+}
+
+.time{
+    margin-top: 40%;
+    margin-bottom: 50%;
+    text-align: center;
+    font-size: 40px;
+}
+
+.buttons{
+    width: 100%;
+}
+button {
+    width: 32%;
+}
