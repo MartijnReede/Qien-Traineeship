@@ -1,6 +1,9 @@
 //Dit gebruiken we om dingen aan de user te vragen.
 const {prompt} = require("enquirer");
 
+//Hiermee maken we de CLI mooi :)
+const {table} = require("table");
+
 let args = "1";
 let records = [];
 
@@ -12,7 +15,7 @@ const getApplicationMenu = async () => {
          message: "Choose an option:\n\n" +
                   "1: Restart app.\n" +
                   "2: Add record.\n" +
-                  "3: List record\n" +
+                  "3: List records.\n" +
                   "4: Close app.\n\n" +
                   "Option: " }
     ]);
@@ -20,6 +23,17 @@ const getApplicationMenu = async () => {
     args = response.chosenOption;
     processUserInput(args)
 };
+
+const waitForPressKey = async () => {
+    const response = await prompt([
+        {
+            type: "text",
+            name: "pressKey",
+            message: "Press enter to go back to the main menu."
+        }
+    ]);
+    getApplicationMenu();
+}
 
 const addRecord = async () => {
     const response = await prompt([
@@ -43,18 +57,32 @@ const addRecord = async () => {
         }
     ]);
 
-    console.log(response);
-    getApplicationMenu();
+    console.log("\nRecord is added to the database.\n");    
+
+    records.push(response);
+    
+    waitForPressKey();
 };
 
+function listRecords(){
+    
+    const data = [["Artist", "Record name", "Release date"]];
+    
+    records.forEach(function(record) {
+        data.push([record.artist, record.recordName, record.releaseDate]);
+    });
+    
+    
+    console.log("Records from database:");
+
+    console.log(table(data));
 
 
 
+    console.log("\n");
 
-
-(function runApp(){
-    processUserInput(args);
-})();
+    waitForPressKey();
+}
 
 function processUserInput(args){
     switch(args) {
@@ -70,7 +98,8 @@ function processUserInput(args){
             break;
         //list records:
         case "3":
-        
+            listRecords();
+            break;
         //exit:    
         case "4":
             console.log("ByeBye!");
@@ -82,15 +111,6 @@ function processUserInput(args){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+(function runApp(){
+    processUserInput(args);
+})();
