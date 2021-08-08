@@ -1,0 +1,15 @@
+{
+  "name": "cli-project2.0",
+  "version": "1.0.0",
+  "description": "CLI project for records",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Martijn Reede",
+  "license": "ISC",
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "table": "^6.7.1"
+  }
+}
