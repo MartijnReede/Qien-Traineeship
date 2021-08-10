@@ -1,6 +1,5 @@
 const {prompt} = require("enquirer");
 let db = require("./database.js");
-const waitForEnter = require("./pressEnterFunc.js");
 const printDatabase = require("./printDatabase.js");
 
 const removePersonFromDatabase = async () => {
