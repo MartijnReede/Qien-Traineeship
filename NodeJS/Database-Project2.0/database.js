@@ -28,7 +28,6 @@ function changeData(sql, params){
     })
 }
 
-
 function removePerson(id) {
     
     const paramsCheck = id;
