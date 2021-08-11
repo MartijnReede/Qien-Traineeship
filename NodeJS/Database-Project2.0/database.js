@@ -18,7 +18,39 @@ function addNewPerson(name, age){
     });
 }
 
+function changeData(sql, params){
+    db.run(sql, params, function(err) {
+        if (err) {
+            console.log(err.message);
+        } else {
+            console.log("Row updated!");
+        }
+    })
+}
+
+
 function removePerson(id) {
+    
+    const paramsCheck = id;
+    const sqlCheck = "SELECT * FROM persons WHERE id = ?";
+
+    db.get(sqlCheck, paramsCheck, (err, row) => {
+        if (err) {
+            console.log(err.message);
+        } else if (row === undefined){
+            console.log(`No person in the database found with the id of: ${id}.`);
+        } else {
+            console.log("Removing:");
+
+            let data = [["ID", "PERSON_NAME", "PERSON_AGE"], [row.id, row.personName, row.personAge]];
+            console.log(table(data));
+
+            removePersonFromDatabase(id);
+        }
+    });
+}    
+    
+function removePersonFromDatabase(id){    
     const sql = "DELETE FROM persons WHERE id = ?";
     const params = id;
     db.run(sql, params, function(err){
@@ -52,6 +84,7 @@ function printData() {
 const databaseObj = {
     addNewPerson: addNewPerson,
     removePerson: removePerson,
+    changeData: changeData,
     printData: printData
 }
 

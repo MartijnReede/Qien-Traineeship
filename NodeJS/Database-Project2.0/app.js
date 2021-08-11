@@ -1,5 +1,6 @@
 const addRecord = require("./addRecord.js");
 const removeExistingPerson = require("./removeRecord.js");
+const changeData = require("./changeData.js");
 const databaseObj = require("./database.js");
 
 const command = process.argv.slice(2)[0];
@@ -7,8 +8,8 @@ const command = process.argv.slice(2)[0];
 const allCommands = ["add", "remove", "printdata", "changedata"];
 
 switch (command) {
-    case "add":
-        addRecord();
+    case "add":  
+        addRecord(); 
         break;
     case "remove":
         removeExistingPerson();
@@ -17,7 +18,7 @@ switch (command) {
         databaseObj.printData();
         break;
     case "changedata":
-        console.log("change ");
+        changeData();
         break;
     default:
         console.log(`The command: '${command}' does not exist. Please enter one of the commands from below:`);

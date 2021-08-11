@@ -17,6 +17,7 @@ const removeExistingPerson = async () => {
     } else if (isNaN(response.id)) {
         console.log("Input error. Please enter a number.");
     } else {
+        console.log("\n");
         databaseObj.removePerson(response.id);
     }
 
