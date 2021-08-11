@@ -1,13 +1,23 @@
+
 const express = require("express");
 const path = require("path");
-const server = express();
+const app = express();
 const port = 8080;
 
-server.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "test.html"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/index.html"));
 });
 
-server.listen(port, () => {
+app.post("/newUser", (req, res) => {
+    const userName = req.body.userName;
+    const favAnimal = req.body.favAnimal;
+
+});
+
+app.listen(port, () => {
     console.log("Server is running!");
 });
 
