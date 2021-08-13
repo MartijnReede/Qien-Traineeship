@@ -7,16 +7,42 @@
 </head>
 <body>
   
-  <span>
+  <span class="titleContainer">
     <h1>CRATE DIGGERS</h1>
     <img class="recordLogo" src="Record-Logo.png">
   </span>
+  <hr/>
 
-  <div>
-
+  <div class="optionContainer" id="optionContainer"> 
+      <form class="homeForm" method="GET" action="/digrecords">
+          <button type="submit" class="homeButton" id="startDigging">START DIGGING</button>
+      </form>
+      
+      <div class="homeTextContainer">
+            <p class="homeText">Search for your favorite records in our enormous database!</p>
+      </div>  
   </div>  
 
+  <div class="optionContainer" id="optionContainer">
+      <form class="homeForm" method="GET" action="/addrecord">
+          <button class="homeButton" id="fillCrates">FILL OUR CRATES</button>
+      </form>
 
+      <div class="homeTextContainer">
+          <p class="homeText">Add records to our database to make it even bigger!</p>
+      </div>  
+  </div>
+
+  <div class="optionContainer" id="optionContainer">
+    <form class="homeForm" method="GET" action="/managecollection">  
+        <button class="homeButton" id="manageCollection">MANAGE YOUR COLLECTION</button>
+    </form>  
+    <div class="homeTextContainer">
+        <p class="homeText">Create and manage your own online record collection!</p>
+    </div>  
+  </div>  
+
+<!--
     <form id="newUserForm" method="POST" action="/newUser">
       
       <label for="userName">Enter your username:</label>
@@ -34,7 +60,7 @@
       <input type="submit" value="Submit">
 
     </form>
-
+  -->
 
 
 </body>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Add Record</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+  <script defer src="JS/addRecord.js"></script>
+</head>
+<body>
+    <span class="titleContainer">
+        <h1>ADD RECORD</h1>
+        <img class="recordLogo" src="Record-Logo.png">
+
+      <form class="menuForm" method="GET" action="/collection">
+        <button class="menuButton" id="collectionMenuButton">COLLECTION</button>
+      </form>  
+
+      <form class="menuForm" method="GET" action="/addrecord">
+        <button class="menuButton" id="addRecordMenuButton">ADD RECORD</button>
+      </form>
+
+      <form class="menuForm" method="GET" action="/digrecords">
+        <button class="menuButton" id="digRecordsMenuButton">DIG RECORDS</button>
+      </form>
+
+      <form class="menuForm" method="GET" action="/">
+        <button class="menuButton" id="homeMenuButton">HOME</button>
+      </form>
+    
+    </span>
+
+    <hr/>
+
+    <form method="POST" action="/addRecord/addRecordToDatabase">
+    <div class="formContainer">
+       
+        <div class="row">
+            <div class="col-25">
+              <label class="addRecordLabel" for="artistName">Artist name:</label>
+            </div>
+            <div class="col-75">
+              <input class="addRecordInput" type="text" name="artistName" id="artistName" required="required">
+            </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-25">
+            <label class="addRecordLabel" for="recordTitle">Record title:</label>
+          </div>
+          <div class="col-75">
+            <input type="text" class="addRecordInput" name="recordTitle" id="recordTitle" required="required">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label class="addRecordLabel" for="recordLabel">Record label:</label>
+          </div>
+          <div class="col-75">
+            <input type="text" class="addRecordInput" name="recordLabel" id="recordLabel" required="required">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label class="addRecordLabel" for="releaseDate">Release date:</label>
+          </div>
+          <div class="col-75">
+            <input type="date" class="addRecordInput" name="releaseDate" id="releaseDate" required="required">
+          </div>
+        </div>
+
+        <div class="tracks" id="tracks">    
+          <div class="row">
+              <div class="col-25">
+                <label class="addRecordLabel" for="track">Track 1: </label>
+              </div> 
+              <div class="col-75">
+                <input type="text" class="addRecordInput" name="track" id="track" required="required">
+              </div>  
+          </div>  
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label class="addRecordLabel" for=addRemoveTracks>Add or remove tracks:</label>
+          </div>
+          <div class="col-75">
+            <button class="trackButton" id="addTrack">+</button>
+            <button class="trackButton" id="removeTrack">-</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <input type="submit" value="Add record!" class="submitRecord" id="submitRecord">
+        </div>  
+    
+    </div>
+    </form>
+    
+</body>
+</html>

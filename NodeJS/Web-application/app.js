@@ -1,5 +1,6 @@
 
 const express = require("express");
+const databaseObj = require("./database.js");
 const path = require("path");
 const app = express();
 const port = 8080;
@@ -7,15 +8,41 @@ const port = 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/Web-pages/index.html"));
 });
 
-app.post("/newUser", (req, res) => {
-    const userName = req.body.userName;
-    const favAnimal = req.body.favAnimal;
-
+app.get("/digrecords", (req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/digRecords.html"));
 });
+
+app.get("/addrecord",(req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/addRecord.html"));
+});
+
+app.post("/addrecord/addRecordToDatabase", (req, res) => {
+    
+    const artistName = req.body.artistName;
+    const recordTitle = req.body.recordTitle;
+    const recordLabel = req.body.recordLabel;
+    const releaseDate = req.body.releaseDate;
+    const tracks = req.body.track;
+    
+    try{
+        //multiple tracks
+        tracks.forEach((track) => {
+            console.log(track);
+        });
+    } catch {
+        //single track
+        console.log("DID NOTY WORK");
+    }
+
+
+   res.redirect("/addrecord");
+});
+
 
 app.listen(port, () => {
     console.log("Server is running!");
