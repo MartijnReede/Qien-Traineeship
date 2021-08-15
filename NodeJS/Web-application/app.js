@@ -1,4 +1,3 @@
-
 const express = require("express");
 const databaseObj = require("./database.js");
 const path = require("path");
@@ -24,21 +23,12 @@ app.get("/addrecord",(req, res) => {
 app.post("/addrecord/addRecordToDatabase", (req, res) => {
     
     const artistName = req.body.artistName;
-    const recordTitle = req.body.recordTitle;
-    const recordLabel = req.body.recordLabel;
-    const releaseDate = req.body.releaseDate;
-    const tracks = req.body.track;
-    
-    try{
-        //multiple tracks
-        tracks.forEach((track) => {
-            console.log(track);
-        });
-    } catch {
-        //single track
-        console.log("DID NOTY WORK");
-    }
+    //const recordTitle = req.body.recordTitle;
+    //const recordLabel = req.body.recordLabel;
+    //const releaseDate = req.body.releaseDate;
+    //const tracks = req.body.track; // = een array bij meerdere tracks! = een string bij een enkele track.
 
+    databaseObj.addRecord(artistName);
 
    res.redirect("/addrecord");
 });
