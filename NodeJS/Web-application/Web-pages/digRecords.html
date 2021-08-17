@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Dig Records</title>
   <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+  <script defer src="JS/digRecords.js"></script>
 </head>
 <body>
     <span class="titleContainer">
@@ -28,6 +29,26 @@
 
     </span>
     <hr/>
+
+    <div class="formContainer">
+      
+        <Button class="searchButton" id="searchButton">Search</button>
+        <input  type="text" id="searchInput" class="searchInput" required="required">
+    
+        <select id="categorySelect" name="categorySelect">
+          <option value="records">Records</option>
+          <option value="artists">Artists</option>
+          <option value="recordLabels">Record labels</option>
+          <option value="tracks">Tracks</option>
+        </select>
+      
+    </div> 
+
+    <div id="searchResultsContainer" class="formContainer">
+      <div class="resultContainer" id="resultContainer">
+        <p class="resultContainerMessage">Search our database!</p>
+      </div class="resultContainer" id="resultContainer">
+    </div>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ db.run("CREATE TABLE IF NOT EXISTS tracks (track_id INTEGER PRIMARY KEY AUTOINCR
 
 //GOED ONTHOUDEN: Wanneer we this.lastID willen gebruiken, moeten we geen arrowfunctie gebruiken maar een function (err) {}.
 
-//Web application functions --------------------------------------------------------------------------------------------
+//Add record functions --------------------------------------------------------------------------------------------
 
 function addRecord(artistName, labelName, releaseTitle, releaseDate, tracks) {
 
@@ -47,10 +47,12 @@ function addRecord(artistName, labelName, releaseTitle, releaseDate, tracks) {
     });
 }
 
+
+
 function addRecordStep2(artistId, labelName, releaseTitle, releaseDate, tracks) {
 
     //Bestaat het label al?
-    const labelSQL1 = "SELECT label_id, label_name FROM record_labels WHERE label_name = ?";
+    const labelSQL1 = "SELECT label_id, label_name FROM record_labels WHERE label_name = ? COLLATE NOCASE";
     const labelParams = [labelName];
     let labelId;
 
@@ -87,8 +89,8 @@ function addRecordStep2(artistId, labelName, releaseTitle, releaseDate, tracks) 
     
 function addRecordStep3(artistId, labelId, releaseTitle, releaseDate, tracks){
 
-    //Release toevoegen als nog niet bestaat met label_id en artist_id.
-    const releaseSQL1 = "SELECT release_id, release_title FROM releases WHERE release_title = ?";
+    //Bestaat de release al?
+    const releaseSQL1 = "SELECT release_id, release_title FROM releases WHERE release_title = ? COLLATE NOCASE";
     const releaseParams1 = [releaseTitle];
     let releaseId;
 
@@ -113,13 +115,13 @@ function addRecordStep3(artistId, labelId, releaseTitle, releaseDate, tracks){
             
             //Als de release al wel bestaat.
             } else {
-                console.log("DATABASE MESSAGE: Release with id: ", rows[0].release_id, " already exist in the database.");
+                console.log("DATABASE MESSAGE: Release with id: ", rows[0].release_id, " already exist in the database. Only unique records can be added.");
                 /*
                 Wanneer er geen release aangemaakt zal worden, maar er wel een nieuwe artiest of label is toegevoegd. Dan moeten
                 deze weer worden weggehaald mits er geen andere releases op hun naam staan. We willen geen artiesten of labels
                 in de database zonder release.
                 */
-                removeUnnecessaryData(); //////////////////////////////////////////////////////////////////////////////////////////////////////
+                removeUnnecessaryData(labelId, artistId);
             }
         }
     });
@@ -128,7 +130,7 @@ function addRecordStep3(artistId, labelId, releaseTitle, releaseDate, tracks){
 function addRecordStep4(releaseId, tracks){
     //Tracks toevoegen met release_id.
 
-    const trackSQL = "INSERT INTO tracks (track_name, realease_id) VALUES (?, ?)";
+    const trackSQL = "INSERT INTO tracks (track_name, release_id) VALUES (?, ?)";
 
     try {
         //Multiple tracks (array).
@@ -156,13 +158,127 @@ function addRecordStep4(releaseId, tracks){
     }
 }
 
-function removeUnnecessaryData(){
+//Verwijder artiesten en labels zonder releases.
+function removeUnnecessaryData(labelId, artistId){
+    
+    const labelSQL= "SELECT label_id FROM releases WHERE label_id = ?";
+    const labelParams = [labelId];
+   
+    db.all(labelSQL, labelParams, (err, rows) => {
+        if (err){
+            console.log(err.message);
+        } else {
 
+            if (rows.length === 0) {
+                
+                //Het label heeft geen releases en zal daarom verwijdert worden. 
+                const delLabelSQL = "DELETE FROM record_labels WHERE label_id = ?";
+                const delLabelParams = [labelId];
+
+                db.run(delLabelSQL, delLabelParams, function(err){
+                    if (err){
+                        console.log(err.message);
+                    } else {
+                        console.log("DATABASE MESSAGE: The record label that was added for this release is removed from the database since it has no released records.");
+                        console.log("DATABASE MESSAGE: Row deleted: ", this.changes, ".");
+                    }
+                });
+            } 
+        }
+    });
+
+    const artistSQL= "SELECT artist_id FROM releases WHERE artist_id = ?";
+    const artistParams = [artistId];
+
+    db.all(artistSQL, artistParams, (err, rows) => {
+        if (err) {
+            console.log(err.message);
+        } else { 
+            
+            if (rows.length === 0) {
+                
+                //De artiest heeft geen releases en zal daarom verwijdert worden. 
+                const delArtistSQL = "DELETE FROM artists WHERE artist_id = ?";
+                const delArtistParams = [artistId];
+
+                db.run(delArtistSQL, delArtistParams, function(err){
+                    if (err){
+                        console.log(err.message);
+                    } else {
+                        console.log("DATABASE MESSAGE: The artist that was added for this release is removed from the database since it has no releases.");
+                        console.log("DATABASE MESSAGE: Row deleted: ", this.changes, ".");
+                    }
+                });
+            } 
+        }
+    });
 }
 
-    //Check voor artiesten en labels zonder releases.
+// Search functions -----------------------------------------------------------------------------------------------------------
 
-// CLI Functions ---------------------------------------------------------------------------------------------------------
+function searchForData(searchInput, category, res){
+
+    //Geeft op index[0] een waarde mee om vast te stellen om wat voor soort zoekopdracht het gaat.
+    let JSONDataObjArray = [{searchType: category}]; 
+
+    switch(category) {
+        
+        case "records":
+            const recordParams = [searchInput];
+            const recordSQL = "SELECT release_id, release_title, release_date, releases.artist_id, artist_name, releases.label_id, label_name FROM releases INNER JOIN record_labels ON record_labels.label_id = releases.label_id INNER JOIN artists ON artists.artist_id = releases.artist_id WHERE release_title LIKE '%' || ? || '%' COLLATE NOCASE";
+        
+            db.all(recordSQL, recordParams, (err, rows) => {
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    rows.forEach(function (row){
+                        JSONDataObjArray.push({
+                            releaseId: row.release_id,
+                            releaseTitle: row.release_title,
+                            releaseDate: row.release_date,
+                            artistId: row.artist_id,
+                            artistName: row.artist_name,
+                            labelId: row.label_id,
+                            labelName: row.label_name
+                        });
+                    });
+                    //Stuurt de response pas op het moment dat de data gevonden is. 
+                    res.send(JSONDataObjArray);     
+                }
+            });
+            break;
+
+        case "artists":
+            const artistParams = [searchInput];
+            const artistSQL = "SELECT artist_id, artist_name FROM artists WHERE artist_name LIKE '%' || ? || '%' COLLATE NOCASE"; 
+            
+            db.all(artistSQL, artistParams, (err, rows) => {
+                if(err){
+                    console.log(err.message);
+                } else {
+                    rows.forEach((row) => {
+                        JSONDataObjArray.push({
+                            artistId: row.artist_id,
+                            artistName: row.artist_name
+                        });
+                    });
+                    //Stuurt de response pas op het moment dat de data gevonden is. 
+                    res.send(JSONDataObjArray);
+                }
+            });
+            break;
+
+        case "recordLabels":
+            console.log("recordLabels");
+            break;
+        case "tracks":
+            console.log("tracks");
+            break;        
+    }
+}
+
+
+// CLI functions --------------------------------------------------------------------------------------------------------------
 
 function printArtists(){
     const sql = "SELECT * FROM artists"
@@ -230,7 +346,9 @@ const databaseObj = {
     addRecord: addRecord,
     printArtists: printArtists,
     printLabels: printLabels,
-    printReleases: printReleases
+    printReleases: printReleases,
+    printTracks: printTracks,
+    searchForData: searchForData
 }
 
 module.exports = databaseObj;
