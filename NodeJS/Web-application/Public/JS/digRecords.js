@@ -24,7 +24,7 @@
         }
 
         const searchType = data[0].searchType;
-       
+    
         switch(searchType){
 
             case "records":
@@ -36,12 +36,23 @@
                     
                     let resultContainer = document.createElement("div");
                     resultContainer.setAttribute("class", "resultContainer");
+
+                    let resultRowsContainer = document.createElement("div");
+                    resultRowsContainer.setAttribute("class", "resultRowsContainer")
  
                     for (let j = 0; j < recordValueNames.length; j++){
                          let dataResultRow = constructResultRow(recordValueNames[j], recordDataValues[j]);
-                         resultContainer.appendChild(dataResultRow)
+                         resultRowsContainer.appendChild(dataResultRow)
                     }
+
+                    resultContainer.appendChild(resultRowsContainer);
+                    
+                    let buttonForm = constructFormButton("Select record", "/digrecords/displayrecord/" + data[i].releaseId, "selectRecord");
+                    resultContainer.appendChild(buttonForm);
+                    
                     searchResultsContainer.appendChild(resultContainer);
+                    
+
                  }
                 break;
 
@@ -55,19 +66,79 @@
                     let resultContainer = document.createElement("div");
                     resultContainer.setAttribute("class", "resultContainer");
 
+                    let resultRowsContainer = document.createElement("div");
+                    resultRowsContainer.setAttribute("class", "resultRowsContainer");
+
                     for (let j = 0; j < artistValueNames.length; j++){
                         let dataResultRow = constructResultRow(artistValueNames[j], artistDataValues[j]);
-                        resultContainer.appendChild(dataResultRow);
+                        resultRowsContainer.appendChild(dataResultRow);
                     }
+
+                    resultContainer.appendChild(resultRowsContainer);
+                    
+                    let buttonForm = constructFormButton("Select artist", "/digrecords/displayartist/" + data[i].artistId, "selectArtist");
+                    resultContainer.appendChild(buttonForm);
+                    
                     searchResultsContainer.appendChild(resultContainer);
                  }
 
                 break;
+            
             case "recordLabels":
+
+                for (let i = 1; i< data.length; i++){
+
+                    let labelValueNames = ["Label: "];
+                    let labelDataValues = [data[i].labelName];
+
+                    let resultContainer = document.createElement("div");
+                    resultContainer.setAttribute("class", "resultContainer");
+
+                    let resultRowsContainer = document.createElement("div");
+                    resultRowsContainer.setAttribute("class", "resultRowsContainer");
+
+                    for (let j = 0; j < labelValueNames.length; j++){
+                        let dataResultRow = constructResultRow(labelValueNames[j], labelDataValues[j]);
+                        resultRowsContainer.appendChild(dataResultRow);
+                    }
+
+                    resultContainer.appendChild(resultRowsContainer);
+                    
+                    let buttonForm = constructFormButton("Select label", "/digrecords/displaylabel/" + data[i].labelId, "selectLabel");
+                    resultContainer.appendChild(buttonForm);
+                    
+                    searchResultsContainer.appendChild(resultContainer);
+                }
+
                 break;
+
             case "tracks":
+        
+                for (let i = 1; i < data.length; i++){
+
+                    let trackValueNames = ["Track: ", "Release: ", "Artist: "];
+                    let trackDataValues = [data[i].trackName, data[i].releaseTitle, data[i].artistName];
+
+                    let resultContainer = document.createElement("div");
+                    resultContainer.setAttribute("class", "resultContainer");
+
+                    let resultRowsContainer = document.createElement("div");
+                    resultRowsContainer.setAttribute("class", "resultRowsContainer");
+
+                    for (let j = 0; j < trackValueNames.length; j++){
+                        let dataResultRow = constructResultRow(trackValueNames[j], trackDataValues[j]);
+                        resultRowsContainer.appendChild(dataResultRow);
+                    }
+
+                    resultContainer.appendChild(resultRowsContainer);
+                    
+                    let buttonForm = constructFormButton("Select track", "/digrecords/displayrecord/" + data[i].releaseId, "selectTrack");
+                    resultContainer.appendChild(buttonForm);
+                    
+                    searchResultsContainer.appendChild(resultContainer);
+                }
                 break;
-       }
+            }
     }
 
 
@@ -98,7 +169,8 @@
 
     function constructResultRow(label, resultText){
         let recordResultRow = document.createElement("div");
-        recordResultRow.setAttribute("id", "resultContainer");     
+        recordResultRow.setAttribute("id", "resultContainer");
+        recordResultRow.setAttribute("class", "resultRow");     
 
         let col15Element = document.createElement("div");
         col15Element.setAttribute("class", "col-15");
@@ -123,6 +195,24 @@
 
         return recordResultRow;
     }
+
+    function constructFormButton(text, action, className){
+
+        let buttonForm = document.createElement("form");
+        buttonForm.setAttribute("method", "GET");
+        buttonForm.setAttribute("action", action);
+        buttonForm.setAttribute("class", "selectButtonForm");
+
+        let button = document.createElement("input");
+        button.setAttribute("type", "submit");
+        button.setAttribute("class", className);
+        button.setAttribute("value", text);
+
+        buttonForm.appendChild(button);
+
+        return buttonForm;
+    }
+
 
    
 }

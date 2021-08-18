@@ -5,7 +5,7 @@ const app = express();
 const port = 8080;
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/Public"));
 
 // END-POINTS -----------------------------------------------------------------------------------------------------------------
 
@@ -15,6 +15,15 @@ app.get("/", (req, res) => {
 
 app.get("/digrecords", (req, res) => {
      res.sendFile(path.join(__dirname, "/Web-pages/digRecords.html"));
+});
+
+app.get("/digrecords/displayrecord/:recordId", (req, res)=> {
+    res.sendFile(path.join(__dirname, "/Web-pages/displayRecord.html"));
+});
+
+app.get("/digrecords/displayrecord/getrecorddata/:recordid", (req, res) =>{
+    const recordId = req.params.recordid;
+    databaseObj.getRecordData(recordId, res);
 });
 
 app.get("/addrecord",(req, res) => {

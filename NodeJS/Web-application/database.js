@@ -269,14 +269,97 @@ function searchForData(searchInput, category, res){
             break;
 
         case "recordLabels":
-            console.log("recordLabels");
+
+            const labelParams = [searchInput];
+            const labelSQL = "SELECT label_id, label_name FROM record_labels WHERE label_name LIKE '%' || ? || '%' COLLATE NOCASE";
+
+            db.all(labelSQL, labelParams, (err, rows) => {
+                if (err){
+                    console.log(err.message);
+                } else {
+                    rows.forEach((row) => {
+                        JSONDataObjArray.push({
+                            
+                                labelId: row.label_id,
+                                labelName: row.label_name
+                        });
+                    });
+                    res.send(JSONDataObjArray);
+                }
+            });
             break;
+
         case "tracks":
-            console.log("tracks");
+            
+            const trackParams = [searchInput];
+            const trackSQL = "SELECT track_id, track_name, tracks.release_id, release_title, releases.artist_id, artist_name FROM tracks INNER JOIN releases ON releases.release_id = tracks.release_id INNER JOIN artists ON artists.artist_id = releases.artist_id WHERE track_name LIKE '%' || ? || '%' COLLATE NOCASE";
+
+            db.all(trackSQL, trackParams, (err, rows) => {
+                if (err){
+                    console.log(err.message);
+                } else {
+                    rows.forEach((row) => {           
+                        JSONDataObjArray.push({
+                            trackId: row.track_id,
+                            trackName: row.track_name,
+                            releaseId: row.release_id,
+                            releaseTitle: row.release_title,
+                            artistId: row.artist_id,
+                            artistName: row.artist_name
+                        });
+                        
+                    });
+                    res.send(JSONDataObjArray);
+                }
+            });
             break;        
     }
 }
 
+function getRecordData(recordId, res){
+    
+    const sql1 = "SELECT release_id, release_title, release_date, releases.artist_id, artist_name, releases.label_id, label_name FROM releases INNER JOIN record_labels ON record_labels.label_id = releases.label_id INNER JOIN artists ON artists.artist_id = releases.artist_id WHERE release_id = ?";
+    const params1 = [recordId];
+    
+    const JSONObjDataArray = [];
+
+    db.get(sql1, params1, (err, row)=> {
+        if (err){
+            console.log(err.message);
+        } else {
+            JSONObjDataArray.push({
+                releaseId: row.release_id,
+                releaseTitle: row.release_title,
+                releaseDate: row.release_date,
+                artistId: row.artist_id,
+                artistName: row.artist_name,
+                labelId: row.label_id,
+                labelName: row.label_name
+            });
+
+            const sql2 = "SELECT * FROM tracks WHERE release_id = ?";
+            const params2 = [recordId];
+
+            db.all(sql2, params2, (err, rows) =>{
+                if (err){
+                    console.log(err.message);
+                } else {
+                    let trackCounter = 1;
+                    rows.forEach((row)=> {
+                        JSONObjDataArray.push({
+                            trackId: row.track_id,
+                            trackNumber: trackCounter,
+                            trackName: row.track_name
+                        });
+                        trackCounter++;
+                    });
+
+                    res.send(JSONObjDataArray);
+                }
+            }); 
+        }
+    });
+}
 
 // CLI functions --------------------------------------------------------------------------------------------------------------
 
@@ -348,7 +431,8 @@ const databaseObj = {
     printLabels: printLabels,
     printReleases: printReleases,
     printTracks: printTracks,
-    searchForData: searchForData
+    searchForData: searchForData,
+    getRecordData: getRecordData
 }
 
 module.exports = databaseObj;

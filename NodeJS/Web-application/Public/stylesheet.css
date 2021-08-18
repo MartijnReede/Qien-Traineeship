@@ -68,6 +68,58 @@ hr {
     width: 960px;
 }
 
+.recordInfoContainer {
+    background-color:	#A0A0A0;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 960px;
+}
+
+.recordInfoContainer2 {
+    background-color:	lightgrey;
+    border-radius: 5px;
+    margin: 10px;
+    width: 940px;
+    overflow: hidden;
+}
+
+.col-25display {
+    padding-left: 10px;
+    float: left;
+    width: 150px;
+    margin-top: 6px;
+}
+  
+  .col-75display {
+    float: left;
+    width: 770px;
+    margin-top: 6px;
+}
+
+.displayButton{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #BEC153;
+    height: 30px;
+    width: 105px;
+    border-radius:3px;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+}
+
+
+.resultInfo {
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+}
+
 .homeTextContainer{
     display: inline-block;
     background-color: lightgray;
@@ -142,8 +194,63 @@ hr {
   
   .col-85 {
     float: left;
-    width: 770px;
+    width: 540px;
     margin-top: 6px;
+  }
+
+  .selectButtonForm{
+    width: 150px;
+    display: inline-block;
+  }
+
+  .selectRecord{
+    width: 145;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    background-color: #BEC153;
+    height: 95px;
+    float: right;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100;   
+  }
+
+  .selectArtist, .selectLabel {
+    width: 145;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    background-color: #BEC153;
+    height: 26px;
+    float: right;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100;  
+  }
+
+  .selectTrack {
+    width: 145;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    background-color: #BEC153;
+    height: 69px;
+    float: right;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100;   
+  }
+
+  .resultRowsContainer {
+      width: 780px;
+      display: inline-block;
   }
 
 
