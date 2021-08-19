@@ -9,9 +9,13 @@ app.use(express.static(__dirname + "/Public"));
 
 // END-POINTS -----------------------------------------------------------------------------------------------------------------
 
+//HOME
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/Web-pages/index.html"));
 });
+
+//DIG RECORDS
 
 app.get("/digrecords", (req, res) => {
      res.sendFile(path.join(__dirname, "/Web-pages/digRecords.html"));
@@ -21,19 +25,33 @@ app.get("/digrecords/displayrecord/:recordId", (req, res)=> {
     res.sendFile(path.join(__dirname, "/Web-pages/displayRecord.html"));
 });
 
-app.get("/digrecords/displayrecord/getrecorddata/:recordid", (req, res) =>{
+app.get("/digrecords/displayrecord/getrecorddata/:recordid", (req, res) => {
     const recordId = req.params.recordid;
     databaseObj.getRecordData(recordId, res);
 });
 
-app.get("/addrecord",(req, res) => {
-    res.sendFile(path.join(__dirname, "/Web-pages/addRecord.html"));
+app.get ("/digrecords/displayartist/:artistid", (req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/displayArtist.html"));
 });
 
-app.get("/searchrecords/:searchinput/:category", (req, res) => {
-        const searchInput = req.params.searchinput;
-        const category = req.params.category;
-        databaseObj.searchForData(searchInput,category, res);
+app.get("/digrecords/displayartist/getartistdata/:artistid", (req, res) => {
+    const artistId = req.params.artistid;
+    databaseObj.getArtistData(artistId, res);
+});
+
+app.get("/digrecords/displaylabel/:labelid", (req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/displayLabel.html"));
+});
+
+app.get("/digrecords/displaylabel/getlabeldata/:labelid", (req, res) => {
+    const labelId = req.params.labelid;
+    databaseObj.getLabelData(labelId, res);
+});
+
+//ADD RECORDS
+
+app.get("/addrecord",(req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/addRecord.html"));
 });
 
 app.post("/addrecord/addRecordToDatabase", (req, res) => {
@@ -49,12 +67,21 @@ app.post("/addrecord/addRecordToDatabase", (req, res) => {
    res.redirect("/addrecord");
 });
 
+//SEARCH RECORDS
+
+app.get("/searchrecords/:searchinput/:category", (req, res) => {
+    const searchInput = req.params.searchinput;
+    const category = req.params.category;
+    databaseObj.searchForData(searchInput,category, res);
+});
+
+//RUNNING SERVER
 
 app.listen(port, () => {
     console.log("Server is running!");
 });
 
-// CLI voor DEV ------------------------------------------------------------------------------------------------------------
+//CLI voor DEV ------------------------------------------------------------------------------------------------------------
  
 let args = process.argv.slice(2)[0];
 

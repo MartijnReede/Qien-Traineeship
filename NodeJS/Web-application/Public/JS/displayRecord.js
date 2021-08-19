@@ -1,11 +1,11 @@
 {
-    
     let releaseTitle = document.getElementById("releaseTitle");
     let artist = document.getElementById("artist");
     let label = document.getElementById("label");
     let releaseDate = document.getElementById("releaseDate");
     let recordInfoContainer = document.getElementById("recordInfoContainer2");
-    
+    let artistPageForm = document.getElementById("artistPageForm");
+    let labelPageForm = document.getElementById("labelPageForm");
     
     let currentURL = window.location.href;
     const recordId = currentURL.substring(47, currentURL.length-1);
@@ -14,7 +14,10 @@
     .then(response => response.json()).then(data => createPageElements(data));
 
     function createPageElements(data){
-        
+
+        artistPageForm.setAttribute("action", `/digrecords/displayartist/${data[0].artistId}`);
+        labelPageForm.setAttribute("action", `/digrecords/displaylabel/${data[0].labelId}`);
+
         const releaseTitleData = data[0].releaseTitle;
         const artistData = data[0].artistName;
         const recordLabelData = data[0].labelName;
@@ -27,7 +30,6 @@
 
         for (let i = 1; i < data.length; i++){
            
-           console.log("test");
             let recordInfoRow = document.createElement("div");
             recordInfoRow.setAttribute("class", "recordInfoRow");
 
@@ -46,36 +48,16 @@
 
             let text2 = document.createElement("text");
             text2.setAttribute("class", "resultInfo");
-            text2.innerHTML = data[i].trackName + ".";
+            text2.innerHTML = data[i].trackName;
+
+            if (i === data.length - 1) {
+                col25.setAttribute("style", "padding-bottom: 30px;")
+            }
 
             col75.appendChild(text2);
             recordInfoRow.appendChild(col75);
 
             recordInfoContainer.appendChild(recordInfoRow);
-
-            if (i === data.length - 1){
-                recordInfoRow.setAttribute("style", "padding-bottom: 120px;");
-            }
-
         }
-
-
-
-
-        /*
-
-                   
-        <div class="recordInfoRow">
-        <div class="col-25display">
-            <text class="resultInfo">Title: </text>
-        </div>
-        <div class="col-75display">
-            <text class="resultInfo" id="releaseTitle"></text>
-        </div>
-      </div>
-
-      */
     }
-  
-
 }

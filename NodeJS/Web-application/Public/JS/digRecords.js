@@ -51,9 +51,7 @@
                     resultContainer.appendChild(buttonForm);
                     
                     searchResultsContainer.appendChild(resultContainer);
-                    
-
-                 }
+                }
                 break;
 
             case "artists":
@@ -80,8 +78,7 @@
                     resultContainer.appendChild(buttonForm);
                     
                     searchResultsContainer.appendChild(resultContainer);
-                 }
-
+                }
                 break;
             
             case "recordLabels":
@@ -109,7 +106,6 @@
                     
                     searchResultsContainer.appendChild(resultContainer);
                 }
-
                 break;
 
             case "tracks":
@@ -140,7 +136,6 @@
                 break;
             }
     }
-
 
     function clearSearchResultsContainer(){
 
@@ -211,8 +206,5 @@
         buttonForm.appendChild(button);
 
         return buttonForm;
-    }
-
-
-   
+    }   
 }

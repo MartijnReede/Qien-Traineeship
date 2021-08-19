@@ -1,0 +1,50 @@
+.recordInfoContainer {
+    background-color:	#A0A0A0;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 960px;
+}
+
+.recordInfoContainer2 {
+    background-color:	lightgrey;
+    border-radius: 5px;
+    margin: 10px;
+    width: 940px;
+    overflow: hidden;
+}
+
+.resultInfo {
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+}
+
+.col-25display {
+    padding-left: 10px;
+    float: left;
+    width: 150px;
+    margin-top: 6px;
+}
+  
+.col-75display {
+    float: left;
+    width: 770px;
+    margin-top: 6px;
+}
+
+.displayButton{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #BEC153;
+    height: 30px;
+    width: 105px;
+    border-radius:3px;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+}

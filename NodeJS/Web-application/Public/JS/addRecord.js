@@ -1,5 +1,4 @@
 {
-    
     const addTrackButton = document.getElementById("addTrack");
     const removeTrackButton = document.getElementById("removeTrack");
     const tracksContainer = document.getElementById("tracks");

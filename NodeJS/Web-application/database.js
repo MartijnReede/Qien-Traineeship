@@ -3,8 +3,11 @@ const db = new sqlite3.Database("db.db");
 
 db.run("CREATE TABLE IF NOT EXISTS record_labels (label_id INTEGER PRIMARY KEY AUTOINCREMENT, label_name TEXT)");
 db.run("CREATE TABLE IF NOT EXISTS artists (artist_id INTEGER PRIMARY KEY AUTOINCREMENT, artist_name TEXT)");
-db.run("CREATE TABLE IF NOT EXISTS releases (release_id INTEGER PRIMARY KEY AUTOINCREMENT, release_title TEXT, release_date TEXT, label_id INTEGER, artist_id INTEGER, FOREIGN KEY(label_id) REFERENCES record_labels(label_id) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(artist_id) REFERENCES artists(artist_id) ON UPDATE CASCADE ON DELETE SET NULL )");
-db.run("CREATE TABLE IF NOT EXISTS tracks (track_id INTEGER PRIMARY KEY AUTOINCREMENT, track_name TEXT, release_id INTEGER, FOREIGN KEY(release_id) REFERENCES releases(release_id) ON UPDATE CASCADE ON DELETE CASCADE)");
+db.run("CREATE TABLE IF NOT EXISTS releases (release_id INTEGER PRIMARY KEY AUTOINCREMENT, release_title TEXT, " +
+       "release_date TEXT, label_id INTEGER, artist_id INTEGER, FOREIGN KEY(label_id) REFERENCES record_labels(label_id) " +
+       "ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(artist_id) REFERENCES artists(artist_id) ON UPDATE CASCADE ON DELETE SET NULL )");
+db.run("CREATE TABLE IF NOT EXISTS tracks (track_id INTEGER PRIMARY KEY AUTOINCREMENT, track_name TEXT, release_id INTEGER, " +
+       "FOREIGN KEY(release_id) REFERENCES releases(release_id) ON UPDATE CASCADE ON DELETE CASCADE)");
 
 //GOED ONTHOUDEN: Wanneer we this.lastID willen gebruiken, moeten we geen arrowfunctie gebruiken maar een function (err) {}.
 
@@ -46,8 +49,6 @@ function addRecord(artistName, labelName, releaseTitle, releaseDate, tracks) {
         }
     });
 }
-
-
 
 function addRecordStep2(artistId, labelName, releaseTitle, releaseDate, tracks) {
 
@@ -225,7 +226,9 @@ function searchForData(searchInput, category, res){
         
         case "records":
             const recordParams = [searchInput];
-            const recordSQL = "SELECT release_id, release_title, release_date, releases.artist_id, artist_name, releases.label_id, label_name FROM releases INNER JOIN record_labels ON record_labels.label_id = releases.label_id INNER JOIN artists ON artists.artist_id = releases.artist_id WHERE release_title LIKE '%' || ? || '%' COLLATE NOCASE";
+            const recordSQL = "SELECT release_id, release_title, release_date, releases.artist_id, artist_name, releases.label_id, " +
+                              "label_name FROM releases INNER JOIN record_labels ON record_labels.label_id = releases.label_id INNER " +
+                              "JOIN artists ON artists.artist_id = releases.artist_id WHERE release_title LIKE '%' || ? || '%' COLLATE NOCASE";
         
             db.all(recordSQL, recordParams, (err, rows) => {
                 if (err) {
@@ -292,7 +295,9 @@ function searchForData(searchInput, category, res){
         case "tracks":
             
             const trackParams = [searchInput];
-            const trackSQL = "SELECT track_id, track_name, tracks.release_id, release_title, releases.artist_id, artist_name FROM tracks INNER JOIN releases ON releases.release_id = tracks.release_id INNER JOIN artists ON artists.artist_id = releases.artist_id WHERE track_name LIKE '%' || ? || '%' COLLATE NOCASE";
+            const trackSQL = "SELECT track_id, track_name, tracks.release_id, release_title, releases.artist_id, artist_name " + 
+                             "FROM tracks INNER JOIN releases ON releases.release_id = tracks.release_id INNER JOIN artists ON " +
+                             "artists.artist_id = releases.artist_id WHERE track_name LIKE '%' || ? || '%' COLLATE NOCASE";
 
             db.all(trackSQL, trackParams, (err, rows) => {
                 if (err){
@@ -318,7 +323,9 @@ function searchForData(searchInput, category, res){
 
 function getRecordData(recordId, res){
     
-    const sql1 = "SELECT release_id, release_title, release_date, releases.artist_id, artist_name, releases.label_id, label_name FROM releases INNER JOIN record_labels ON record_labels.label_id = releases.label_id INNER JOIN artists ON artists.artist_id = releases.artist_id WHERE release_id = ?";
+    const sql1 = "SELECT release_id, release_title, release_date, releases.artist_id, artist_name, releases.label_id, " +
+                 "label_name FROM releases INNER JOIN record_labels ON record_labels.label_id = releases.label_id INNER " +
+                 "JOIN artists ON artists.artist_id = releases.artist_id WHERE release_id = ?";
     const params1 = [recordId];
     
     const JSONObjDataArray = [];
@@ -357,6 +364,59 @@ function getRecordData(recordId, res){
                     res.send(JSONObjDataArray);
                 }
             }); 
+        }
+    });
+}
+
+function getArtistData(artistId, res){
+   
+    const releasesSQL = "SELECT release_id, release_title, release_date, label_name, artists.artist_name FROM releases INNER " + 
+                        "JOIN artists ON releases.artist_id = artists.artist_id INNER JOIN record_labels ON releases.label_id = " +
+                        "record_labels.label_id WHERE releases.artist_id = ?";
+    const releasesParams = [artistId];
+    JSONDataObjArray = [];
+
+    db.all(releasesSQL, releasesParams, (err, rows) => {
+        if (err){
+            console.log(err.message);
+        } else {
+            rows.forEach((row) => {
+                JSONDataObjArray.push({
+                    releaseId: row.release_id,
+                    releaseTitle: row.release_title,
+                    releaseDate: row.release_date,
+                    artistName: row.artist_name,
+                    labelName: row.label_name
+                });
+            });
+                    
+            res.send(JSONDataObjArray);  
+        }
+    });
+}
+
+function getLabelData(labelId, res){
+
+    let JSONDataObjArray = [];
+    const releasesSQL = "SELECT release_id, release_title, release_date, artist_name, label_name FROM releases INNER JOIN record_labels " +
+                        "ON releases.label_id = record_labels.label_id INNER JOIN artists ON releases.artist_id = artists.artist_id WHERE " +
+                        "releases.label_id = ?";
+    const releasesParams = [labelId];
+
+    db.all(releasesSQL, releasesParams, (err, rows) => {
+        if (err){
+            console.log(err.message);
+        } else {
+            rows.forEach((row) => {
+                JSONDataObjArray.push({
+                    labelName: row.label_name,
+                    releaseId: row.release_id,
+                    releaseTitle: row.release_title,
+                    releaseDate: row.release_date,
+                    artistName: row.artist_name
+                });
+            });
+            res.send(JSONDataObjArray);
         }
     });
 }
@@ -432,7 +492,9 @@ const databaseObj = {
     printReleases: printReleases,
     printTracks: printTracks,
     searchForData: searchForData,
-    getRecordData: getRecordData
+    getRecordData: getRecordData,
+    getArtistData: getArtistData,
+    getLabelData: getLabelData
 }
 
 module.exports = databaseObj;

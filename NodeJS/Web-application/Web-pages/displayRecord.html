@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Record</title>
   <script defer src="../../JS/displayRecord.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/navBar.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/displayRecord.css">
 </head>
 <body>
       <span class="titleContainer">
@@ -33,7 +34,7 @@
           <div class="recordInfoContainer2" id="recordInfoContainer2">
 
             <div class="recordInfoRow">
-              <p class="resultInfo" style="padding-left: 10px; padding-top: 0px; font-size: 20px; font-weight: bold;">Record info:</p>
+              <p class="resultInfo" style="padding-left: 10px; padding-top: 0px; font-size: 20px;">Record info:</p>
             </div>  
 
             <div class="recordInfoRow">
@@ -76,13 +77,13 @@
             <div class="recordInfoRow">
 
               <div class="col-25display">
-                <form style="display: inline-block;" method="GET" action="/">
+                <form id="artistPageForm" style="display: inline-block;" method="GET">
                   <input class="displayButton" type="submit" value="Artist page"/>
                 </form>
               </div>
               
                <div class="col-75display">
-                <form style="display: inline-block" method="GET" action="/">
+                <form id="labelPageForm" style="display: inline-block" method="GET">
                   <input class="displayButton" type="submit" value="Label page">
                 </form> 
               </div>             
@@ -91,15 +92,9 @@
             <div style="height: 150px; width: 900px"></div>
             
             <div class="recordInfoRow">
-              <p class="resultInfo" style="padding-left: 10px; padding-top: 0px; font-size: 20px; font-weight: bold;">Tracks: </p>
+              <p class="resultInfo" style="padding-left: 10px; padding-top: 0px; font-size: 20px;">Tracks: </p>
             </div> 
-
-            
- 
-
           </div>  
-        </div>  
-
-    
+        </div> 
 </body>
 </html>
