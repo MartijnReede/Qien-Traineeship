@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body style="margin: auto; width: 960px;">
+
+    <h1>Please register</h1>
+
+    <form method="POST" action="/register">
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" placeholder="Username" class="username" id="username" name="username">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" placeholder="password" class="password" id="password" name="password">
+        </div>
+            <input type="submit" value="Register">
+    </form>
+
+
+
+    <h1>If you have an account, login here!</h1>
+
+    <form method="POST" action="/login">
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" placeholder="Username" class="username" id="username" name="username">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" placeholder="password" class="password" id="password" name="password">
+        </div>
+            <input type="submit" value="Login">
+    </form>
+
+
+
+</body>
+</html>
