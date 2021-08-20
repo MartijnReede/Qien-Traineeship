@@ -1,0 +1,28 @@
+----- COOCKIE VS SESSION ------
+
+Ze zijn verschillend in de plekken waarin data is opgeslagen.
+
+Coockie:
+    - Zijn data is opgeslagen in de browser. De browser zal de "key value pair" hieraan toevoegen.
+      voor elke HTTP request dat hij moet doen. () 
+    - Je kan hier niet veel data in opslaan.
+    - We moeten hier geen gevoelige info in opslaan zoals user info / passwords etc. Een hacker zou dan gemakkelijk de gegevens kunnen stelen. 
+
+Session:
+    - Is opgeslagen in de server-side. Hiermee bedoelen we de Express JS applicatie.
+    - Zal kan iets "grotere" data opslaan. 
+
+------ CONFIG SESSIONS ------
+
+npm install express-session.
+const session = require("express-session");
+
+
+------ SESSION STORE IMPLEMENTATION ------
+
+Waar gaan we onze sessions opslaan? By default komt express-session met een 
+eigen manier om de sessions op te slaan, maar het gebruikt geen database. Het is dan gewoon in-memory/.
+Dit is geen opschaalbare oplossing. We willen het liever opslaan in een database. We moeten daarom
+een session-store opzetten. 
+
+Dit betekend eigenlijk dat we onze database moeten koppelen aan onze session-express middleware. 

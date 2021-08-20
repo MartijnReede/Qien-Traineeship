@@ -1,0 +1,17 @@
+{
+  "name": "authentication-project-sessions",
+  "version": "1.0.0",
+  "description": "Sessions with Passport and Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Martijn Reede",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.12",
+    "sqlite3": "^5.0.2"
+  }
+}
