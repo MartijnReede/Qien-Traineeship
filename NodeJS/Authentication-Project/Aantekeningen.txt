@@ -1,0 +1,144 @@
+----- USER AUTHENTICATION CHOICES ----- 
+
+Onderstaand de opties. Van niet-zo-complex (1) tot heel erg complex (4). Dit betekend overigens niet dat
+nummer 1 niet zou volstaan in een applicatie. 
+
+1. Session
+2. JSON Web Tokens
+3. OAuth
+    - In-House
+    - Saas
+4. Other / Ad-Hoc
+
+In deze lessen gaan we ons alleen richten op Session en JSON Web Tokens (JWT).
+
+Session en JWT gaan er vooral om: WIE is de user? --> AUTHENTICATION.
+
+Voor hele grote applicaties wordt regelmatig OAuth gebruikt. 
+Hier gaat het er ook om WAT MAG de user? -- > AUTHORISATION.
+
+----- THE PASSPORT JS PACKAGE -----
+
+Passport JS is middleware en gebruikte "strategies" om de authentication te regelen.
+Als we naar de website van passport.js gaan zien we dat er heel veel verschillende
+strategies beschikbaar zijn.  Het is een framework waarin het toegestaan is voor developers
+om zelf strategieen te programmeren.
+
+------ THE PASSPORT JS LOGIC ------
+
+1. Op elke HTTP request zal Passport een strategie gebruiken om vast te stellen of de persoon
+die de request maakt wel toestemming heeft om de pagina/gegevens op te halen.
+
+2. Heeft de persoon geen toestemming, dan wordt er een 401 error gegooid. 
+
+----- HTTP HEADERS -----
+
+Hoe zien we HTTP headers? Voorbeeld: 
+1. Ga naar Google.com.
+2. Inspecteer de pagina.
+3. Ga naar het kopje Network.
+4. Ververs de pagina.
+5. Selecteer het bestandje www.google.com.
+6. Zie alle headers: 
+        - General headers.
+        - Response headers.
+        - Request headers.
+
+
+HTTP-Client: Kan alles zijn wat met het internet verbinding kan maken. 
+
+GENERAL HEADERS:
+    - Deze kunnen gerelateerd zijn aan de req of res.
+    - Geven algemene informatie weer zoals:
+            - Wat is de URL?
+            - Wat voor soort request was het? Get, Post, etc.
+            - Status code: (200), we hebben de data van google succesvol ontvangen. 
+
+REQUEST HEADERS:
+    - Deze maakt de browser voor ons. Het verteld de server wat voor soort data we accepteren: 
+            - accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/ (We accepteren XLM, HTML, TEXT) etc.
+            - accept-encoding: gzip, deflate, br
+            - accept-language: nl-NL,nl;q=0.9,en-US;q=0.8,en;q=0.7 (We accepteren Nederland en Engels).
+    - Het zijn dus instructies voor de server waar we iets vandaan willen halen.
+    - Welke agent (welke browser) gebruiken we.
+    - Coockie. 
+    - Nog veel meer headers.
+
+RESPONSE HEADERS:
+    - Bijvoorbeeld: De browser vroeg om HTML. De response kan dan zeggen. Je vroeg om HTML, hier heb je HTML.
+            - content-type: text/html; charset=UTF-8
+    - Set coockie: Geeft key-value pairs. Bijv: expires 20-20-2021 om 15:53 uur. 
+
+----- COOKIES -----
+
+HTTP is een "stateless" protecol. Het zal telkens weer vergeten wat we hiervoor in de browser hebben
+uitgespookt, tenzij we een manier hebben om dit te onthouden. 
+
+Stel dat een gebruiker inlogd, dan moeten we dit vervolgens op de pagina's die daarna bezocht worden
+wel onthouden. Als dit niet het geval zou zijn, dan zouden we bij elke request opnieuw moeten inloggen. 
+
+Dit is waar de SET-COOCKIE headers aan bod komen. Als je voor het eerst naar een website gaat, zal de
+response van de server je browser vragen een cookie op te slaan. Elke keer als er op diezelfde website
+een nieuwe coockie wordt meegestuurd, zal deze vastgemaakt worden aan het eerste coockie. Dit is heel handig
+als het om authentication gaat. 
+
+Oftewel, loggen we in, dan zal er een coockie worden megegeven die zegt: JA, je hebt toegang tot deze website. 
+Elke keer als we de website opnieuw bezoeken, zal de server d.m.v. coockies weten dat we authenticated zijn. 
+
+De vraag is vervolgens, hoe lang laten we deze coockie gelden? Dit kunnen we doen met de expires-set-cookie header.
+We kunnen de coockie dus laten verlopen waardoor we na verloop van tijd opnieuw moeten inloggen. 
+
+----- MIDDLEWARE -----
+
+Onderstaand een voorbeeld van wat middleware nou precies is. We moeten hiervoor even een server opstarten met Express.
+Het is ook goed om nu te noemen dat een simpele request bestaat uit verschillende params en we kunnen hem op verschillende
+manieren programmeren:
+
+Zoals ik gewend ben:
+
+app.get("/endpoint", (req, res) => { 
+    //Code.
+});
+
+Het kan ook op de onderstaande manier: 
+
+app.get("/endpoint", middleware1, middleware2, standardCallbackFunc);
+    - Hierboven heb ik 3 functies ingevoerd. Express laat je zo veel functies toevoegen als je zelf wil. 
+    - Standaard worden parameters req, res en next meegegeven. We gebruiken next(); om de volgende functie aan te roepen. 
+
+function middleware1(req, res, next) {
+    console.log("I'm middleware1");
+    next();
+}
+
+function middleware2(req, res,  next) {
+    console.log("I'm middleware2");
+    next();
+}
+
+function standardCallbackFunc(req, res, next) {
+    console.log("I'm the standard callback");
+    res.send("<h1>Hello world<h1>");
+}
+
+De output op de console is nu:
+I'm middleware1
+I'm middleware2
+I'm standard callback
+
+En in de browser zien we Hello World. 
+
+------- ROUTE VS GLOBAL MIDDLEWARE -----
+
+De bovenstaande voorbeelden geven weer hoe je middleware kan toepassen voor een bepaalde route. 
+Express biedt ook de mogelijkheid om globaal middleware in te stellen. Dit wordt dan met het aanroepen
+van een request altijd uitgevoerd. We kunnen middleware toevoegen d.m.v. de methode:
+
+app.use(middlewareFunc);
+
+----- ERROR HANDLERS ------
+
+We moeten ten alle tijden voorkomen dat onze app crashed. Dit kan er namelijk voor zorgen dat als de app
+op een server draait, deze er uren uitligt zonder dat we dit weten. We moeten daarom zorgen dat onze errors altijd
+goed gehandled worden. 
+
