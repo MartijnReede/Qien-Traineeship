@@ -33,12 +33,14 @@ function addRecord(artistName, labelName, releaseTitle, releaseDate, tracks) {
                 db.run(artistSQL2, artistParams, function(err){
                     if (err) {
                         console.log(err.message);
-                    } else {
-                        //We hebben hier de artist_id nodig van de artiest die we zojuist hebben toegevoegd!
-                        artistId = this.lastID;
-                        console.log("DATABASE MESSAGE: New artist added to the database with id: ", this.lastID, ".");
-                        addRecordStep2(artistId, labelName, releaseTitle, releaseDate, tracks);
+                        return;
                     }
+                    
+                    //We hebben hier de artist_id nodig van de artiest die we zojuist hebben toegevoegd!
+                    artistId = this.lastID;
+                    console.log("DATABASE MESSAGE: New artist added to the database with id: ", this.lastID, ".");
+                    addRecordStep2(artistId, labelName, releaseTitle, releaseDate, tracks);
+                    
                 });
             //Als de artiest wel bestaat, dan hebben we alsnog de artist_id nodig.    
             } else {
