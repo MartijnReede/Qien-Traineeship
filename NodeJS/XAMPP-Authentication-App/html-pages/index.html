@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+
+    <h1>Menu</h1>
+
+        <form style="display:inline-block" method="GET" action="/">
+            <input type="submit" value="Login">
+        </form>
+
+        <form style="display:inline-block" method="GET" action="/home">
+            <input type="submit" value="Home">
+        </form>
+
+        <form style="display:inline-block" method="GET" action="/normalprotected">
+            <input type="submit" value="Normal protected">
+        </form>
+
+        <form style="display:inline-block" method="GET" action="/adminprotected">
+            <input type="submit" value="Admin protected">
+        </form>
+
+        <form style="display:inline-block" method="GET" action="/logout">
+            <input type="submit" value="Logout">
+        </form>
+
+    <h1>Login</h1>
+
+        <form method="POST" action="/login">
+            <div>
+                <label for="username">Username: </label>
+                <input type="text" placeholder="Username" class="username" id="loginUsername" name="username">
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" placeholder="password" class="password" id="loginPassword" name="password">
+            </div>
+                <input type="submit" value="Login">
+        </form>
+
+    <h1>Register</h1>
+
+        <form method="POST" action="/register">
+            <div>
+                <label for="username">Username: </label>
+                <input type="text" placeholder="Username" class="username" id="registerUsername" name="username">
+            </div>
+
+            <div>
+                <label for="age">Age: </label>
+                <input type="number" placeholder="Age" class="age" id="age", name="age">
+            </div>
+
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" placeholder="password" class="password" id="registerPassword" name="password">
+            </div>
+                <input type="submit" value="Register">
+        </form>
+
+</body>
+</html>
