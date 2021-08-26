@@ -1,4 +1,3 @@
-const { BADFLAGS } = require("dns");
 const mysql = require("mysql");
 const User = require("./user");
 

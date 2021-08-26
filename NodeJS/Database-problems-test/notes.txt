@@ -1,0 +1,33 @@
+
+FROM DATABASE
+
+async function getAllUsers(){
+
+        const mysql = require('mysql2/promise');
+        // create the connection
+        const connection = await mysql.createConnection({   
+        host: "localhost",
+        port: "3000",
+        user: "root",
+        password: "",
+        database: "xampp_authentication_db"});
+        // query database
+        return connection.execute("SELECT * FROM users");
+            
+    }
+
+
+
+
+
+const command = process.argv.slice(2)[0];
+
+switch(command){
+    case "printtest": 
+        console.log("Voor invoke db methode");
+        
+        (async () => console.log(await databaseObj.getAllUsers()))();
+        
+        console.log("Na invoke db methode");
+    break;
+}
