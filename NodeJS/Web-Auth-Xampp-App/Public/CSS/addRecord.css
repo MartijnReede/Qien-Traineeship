@@ -1,0 +1,61 @@
+
+.addRecordInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .addRecordLabel {
+    padding: 9px 9px 9px 0;
+    display: inline-block;
+    font-family: "Andale Mono", monospace; 
+    font-size: 18px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+    
+  }
+  
+  .submitRecord {
+    background-color: #5CC995;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    width: 940px;
+    margin: 10px;
+    font-family: "Andale Mono", monospace; 
+    font-size: 18px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+    line-height: 26.4px;
+  }
+  
+  .col-25 {
+    padding-left: 10px;
+    float: left;
+    width: 230px;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 690px;
+    margin-top: 6px;
+  }
+
+  .trackButton{
+    height: 35px;
+    width: 35px;
+    border-radius: 3px;
+    font-family: "Andale Mono", monospace; 
+    font-size: 25px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+    line-height: 26.4px;
+  }

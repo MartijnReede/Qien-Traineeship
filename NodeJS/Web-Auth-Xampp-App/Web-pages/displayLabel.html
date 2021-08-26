@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Record label</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/displayLabel.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/navBar.css">
+  <script defer src="/JS/displayLabel.js"></script>
+</head>
+<body>
+  <span class="titleContainer">
+    <h1>Label</h1>
+    <img class="recordLogo" src="/Record-Logo.png">
+
+    <form class="menuForm" method="GET" action="/collection">
+      <button class="menuButton" id="collectionMenuButton">COLLECTION</button>
+    </form>  
+
+    <form class="menuForm" method="GET" action="/addrecord">
+      <button class="menuButton" id="addRecordMenuButton">ADD RECORD</button>
+    </form>
+
+    <form class="menuForm" method="GET" action="/digrecords">
+      <button class="menuButton"id="digRecordsMenuButton">DIG RECORDS</button>
+    </form>
+
+    <form class="menuForm" method="GET" action="/">
+      <button class="menuButton" id="homeMenuButton">HOME</button>
+    </form>
+  </span>
+  <hr/> 
+
+  <div class="labelContainer1" id="releasesContainer1">
+    <div class="labelContainer2" id="titleContainer"></div>
+  </div>
+
+</body>
+</html>

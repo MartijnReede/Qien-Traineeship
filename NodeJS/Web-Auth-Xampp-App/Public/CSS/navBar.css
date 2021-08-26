@@ -1,0 +1,80 @@
+body{
+    margin: auto;
+    width: 960px;
+    background-color: lightgrey;
+    padding-bottom: 100px;
+}
+
+h1 {
+    display: inline;
+    font-family: "Andale Mono", monospace; 
+    font-size: 75px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 26.4px;
+}
+
+hr {
+    width: 960px;
+}
+
+.homeButton{
+    display:inline-block;
+    font-family: "Andale Mono", monospace; 
+    font-size: 30px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+    line-height: 26.4px;
+    width: 465px;
+    height: 130px;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+#startDigging, #digRecordsMenuButton{
+    background-color: #BEC153;
+}
+
+#fillCrates, #addRecordMenuButton {
+    background-color: #5CC995;
+}
+
+#manageCollection, #collectionMenuButton{
+    background-color: #6764D0;
+}
+
+#homeMenuButton {
+    background-color: #C87166
+}
+
+.recordLogo {
+    padding-left: 5px;
+    height: 50px;
+}
+
+.titleContainer{
+    margin-top: 30px;
+    width: 960px;
+    display: inline-block;
+}
+
+
+.menuForm {
+    display: inline-block;
+    margin-top: 22px;
+    float: right; 
+}
+
+.menuButton{
+    height: 30px;
+    margin-left: 5px;
+    width: 105px;
+    border-radius:3px;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+}

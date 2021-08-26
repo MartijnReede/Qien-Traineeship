@@ -1,0 +1,83 @@
+.labelContainer1 {
+    background-color:	#A0A0A0;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 960px;
+}
+
+.labelContainer2 {
+    background-color:	lightgrey;
+    border-radius: 5px;
+    margin: 10px;
+    width: 940px;
+    overflow: hidden;
+}
+
+
+
+.displayLabelName{
+    font-size: 20px;
+    font-family: "Andale Mono", monospace; 
+    padding-left: 10px;
+    font-style: bold; 
+}
+
+.resultContainer {
+    background-color:	lightgrey;
+    border-radius: 5px;
+    margin: 10px;
+    overflow:hidden;
+    width: 940px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.resultRowsContainer {
+    width: 780px;
+    display: inline-block;
+}
+
+.resultContainerMessage{
+    display: inline-block;
+    padding-left: 10px;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100; 
+}
+
+.col-15 {
+    padding-left: 10px;
+    float: left;
+    width: 150px;
+    margin-top: 6px;
+  }
+  
+  .col-85 {
+    float: left;
+    width: 540px;
+    margin-top: 6px;
+  }
+
+  .selectButtonForm{
+    width: 150px;
+    display: inline-block;
+  }
+
+  
+  .selectRecord{
+    width: 145;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    background-color: #BEC153;
+    height: 70px;
+    float: right;
+    font-family: "Andale Mono", monospace; 
+    font-size: 14px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 100;   
+  }

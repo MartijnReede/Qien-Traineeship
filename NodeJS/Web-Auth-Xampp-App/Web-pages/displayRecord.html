@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Record</title>
+  <script defer src="../../JS/displayRecord.js"></script>
+  <link rel="stylesheet" type="text/css" href="/CSS/navBar.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/displayRecord.css">
+</head>
+<body>
+      <span class="titleContainer">
+        <h1>RECORD</h1>
+        <img class="recordLogo" src="../../Record-Logo.png">
+
+        <form class="menuForm" method="GET" action="/collection">
+          <button class="menuButton" id="collectionMenuButton">COLLECTION</button>
+        </form>  
+
+        <form class="menuForm" method="GET" action="/addrecord">
+          <button class="menuButton" id="addRecordMenuButton">ADD RECORD</button>
+        </form>
+
+        <form class="menuForm" method="GET" action="/digrecords">
+          <button class="menuButton"id="digRecordsMenuButton">DIG RECORDS</button>
+        </form>
+
+        <form class="menuForm" method="GET" action="/">
+          <button class="menuButton" id="homeMenuButton">HOME</button>
+        </form>
+      </span>
+        <hr/>
+
+        <div class="recordInfoContainer">
+          <div class="recordInfoContainer2" id="recordInfoContainer2">
+
+            <div class="recordInfoRow">
+              <p class="resultInfo" style="padding-left: 10px; padding-top: 0px; font-size: 20px;">Record info:</p>
+            </div>  
+
+            <div class="recordInfoRow">
+                <div class="col-25display">
+                    <text class="resultInfo">Title: </text>
+                </div>
+                <div class="col-75display">
+                    <text class="resultInfo" id="releaseTitle"></text>
+                </div>
+            </div>
+
+            <div class="recordInfoRow">
+                <div class="col-25display">
+                  <text class="resultInfo">Artist: </text>
+                </div>
+
+                <div class="col-75display">
+                  <text class="resultInfo" id="artist"></text>
+                </div>
+             </div>
+             
+             <div class="recordInfoRow">
+                <div class="col-25display">
+                  <text class="resultInfo">Label:</text>
+                </div>
+                <div class="col-75display">
+                  <text id="label" class="resultInfo"></text>
+                </div>
+             </div> 
+             
+             <div class="recordInfoRow">
+                <div class="col-25display">
+                  <text class="resultInfo">Release date: </text>
+                </div>
+                <div class="col-75display">
+                  <text class="resultInfo" id="releaseDate"></text>
+                </div>
+            </div>  
+         
+            <div class="recordInfoRow">
+
+              <div class="col-25display">
+                <form id="artistPageForm" style="display: inline-block;" method="GET">
+                  <input class="displayButton" type="submit" value="Artist page"/>
+                </form>
+              </div>
+              
+               <div class="col-75display">
+                <form id="labelPageForm" style="display: inline-block" method="GET">
+                  <input class="displayButton" type="submit" value="Label page">
+                </form> 
+              </div>             
+            </div>
+
+            <div style="height: 150px; width: 900px"></div>
+            
+            <div class="recordInfoRow">
+              <p class="resultInfo" style="padding-left: 10px; padding-top: 0px; font-size: 20px;">Tracks: </p>
+            </div> 
+          </div>  
+        </div> 
+</body>
+</html>
