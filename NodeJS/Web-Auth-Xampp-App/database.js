@@ -1,3 +1,180 @@
+const mysql = require("mysql2/promise");
+
+let db;
+
+(async () => {
+
+    const dbConfig = {
+        host: "localhost",
+        port: 3000,
+        user: "root",
+        password: "",
+        database: "vinyl_records_authenticated_app"
+    }
+
+    const database = await mysql.createConnection(dbConfig);
+    
+    //Create database
+    await database.execute("CREATE DATABASE IF NOT EXISTS vinyl_records_authenticated_app")
+                  .then(console.log("Database created or it already exists."))
+                  .catch(err => console.log(err.message));
+    
+    //Create users table              
+    await database.execute("CREATE TABLE IF NOT EXISTS users (user_id INTEGER AUTO_INCREMENT, user_name TEXT, user_email TEXT" +
+                          ", user_hash TEXT, user_salt TEXT, PRIMARY KEY(user_id))")
+                  .then(console.log("Users table created or it already exists."))
+                  .catch(err => console.log(err.message));
+
+    //Create record labels table
+    await database.execute("CREATE TABLE IF NOT EXISTS record_labels (label_id INTEGER AUTO_INCREMENT, label_name TEXT, PRIMARY " +
+                           "KEY(label_id))")
+                  .then(console.log("Record labels table created or it already exists."))
+                  .catch(err => console.log(err.message));  
+    
+    //Create artists table
+    await database.execute("CREATE TABLE IF NOT EXISTS artists (artist_id INTEGER AUTO_INCREMENT, artist_name TEXT, PRIMARY " +
+                           "KEY(artist_id))")
+                  .then(console.log("Artists table created or it already exists."))
+                  .catch(err => console.log(err.message));
+
+    //Create records table
+    await database.execute("CREATE TABLE IF NOT EXISTS records (record_id INTEGER AUTO_INCREMENT, record_title TEXT, release_date " +
+                           "TEXT, label_id INTEGER, artist_id INTEGER, PRIMARY KEY(record_id), CONSTRAINT fk_record_labelid FOREIGN " +
+                           "KEY(label_id) REFERENCES record_labels(label_id) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT " + 
+                           "fk_record_artistid FOREIGN KEY(artist_id) REFERENCES artists(artist_id) ON DELETE CASCADE ON UPDATE CASCADE)")
+                   .then(console.log("Records table created or it already exists."))
+                   .catch(err => console.log(err.message));        
+
+    //Create tracks table
+    await database.execute("CREATE TABLE IF NOT EXISTS tracks (track_id INTEGER AUTO_INCREMENT, track_title TEXT, record_id INTEGER, " +
+                           "PRIMARY KEY(track_id), CONSTRAINT fk_track_recordid FOREIGN KEY(record_id) REFERENCES records(record_id) " +
+                           "ON DELETE CASCADE ON UPDATE CASCADE)")
+                           .then(console.log("Tracks table created or it already exists."))
+                           .catch(err => console.log(err));
+
+    //Create record collections table (many to many)
+    await database.execute("CREATE TABLE IF NOT EXISTS record_collections (collection_item_id INTEGER AUTO_INCREMENT, user_id INTEGER, " +
+                           "record_id INTEGER, PRIMARY KEY(collection_item_id), CONSTRAINT fk_userid_userid FOREIGN KEY(user_id) REFERENCES " +
+                           "users (user_id) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_recordid_recordid FOREIGN KEY(record_id) " +
+                           "REFERENCES records(record_id) ON DELETE CASCADE ON UPDATE CASCADE)")
+                  .then(console.log("Record collection table created or it already exists."))
+                  .catch(err => console.log(err.message));
+
+    db = database;
+})();
+
+// Check functions -----------------------------------------------------------------------------------------------------
+
+async function checkIfRecordExists(recordTitle){
+    const sql = "SELECT record_title FROM records WHERE record_title = ?";
+    const params = [recordTitle];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+      
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;         
+}
+
+async function checkIfArtistExists(artistName){
+    
+    const sql = "SELECT artist_name FROM artists WHERE artist_name = ?";
+    const params = [artistName];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+    
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;
+}
+
+async function checkIfRecordLabelExists(labelName){
+    const sql = "SELECT label_name FROM record_labels WHERE label_name = ?";
+    const params = [label_name];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;
+}
+
+async function checkIfUserExists(userName){
+    const sql = "SELECT user_name FROM users WHERE user_name = ?";
+    const params = [userName];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;
+}
+
+// Get id functions ----------------------------------------------------------------------------------------------------
+
+async function getRecordId(recordName) {
+    const sql = "SELECT record_id FROM records WHERE record_name = ?";
+    const params = [recordName];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;
+}
+
+async function getArtistId(artistName) {
+    const sql = "SELECT artist_id FROM artists WHERE artist_name = ?";
+    const params = [artistName];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;
+}
+
+async function getRecordLabelId(labelName) {
+    const sql = "SELECT label_id FROM record_labels WHERE label_name = ?";
+    const params = [labelName];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+
+    if (data[0].length > 0){
+        return true;
+    }
+    return false;
+}
+
+async function getUserId(userName) {
+    const sql = "SELECT user_id FROM users WHERE user_name = ?";
+    const params = [userName];
+    const data = await db.execute(sql, params).catch(err => console.log(err.message));
+
+    if (data[0].length > 0) {
+        return true;
+    }
+    return false;
+}
+
+
+// Add data functions ---------------------------------------------------------------------------------------------------
+
+
+
+const databaseObj = {
+    db:db,
+    searchRecord: searchRecord,
+    addArtist: addArtist
+}
+
+module.exports = databaseObj;
+
+
+
+
+
+/*
+
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("db.db");
 
@@ -123,7 +300,7 @@ function addRecordStep3(artistId, labelId, releaseTitle, releaseDate, tracks){
                 Wanneer er geen release aangemaakt zal worden, maar er wel een nieuwe artiest of label is toegevoegd. Dan moeten
                 deze weer worden weggehaald mits er geen andere releases op hun naam staan. We willen geen artiesten of labels
                 in de database zonder release.
-                */
+                
                 removeUnnecessaryData(labelId, artistId);
             }
         }
@@ -500,3 +677,6 @@ const databaseObj = {
 }
 
 module.exports = databaseObj;
+
+*/
+

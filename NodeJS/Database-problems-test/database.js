@@ -28,7 +28,7 @@ let db;
 
 function getAllUsers(){
 
-    return db.execute("SELECT * FROM useadrs").catch(err => console.log(err.message));
+    return db.execute("SELECT * FROM users").catch(err => console.log(err.message));
 
 }
 

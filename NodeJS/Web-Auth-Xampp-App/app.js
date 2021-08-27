@@ -1,20 +1,60 @@
 const express = require("express");
 const databaseObj = require("./database.js");
 const path = require("path");
+const { db } = require("./database.js");
 const app = express();
 const port = 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/Public"));
 
-// END-POINTS -----------------------------------------------------------------------------------------------------------------
-
-//HOME
-
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/Web-pages/index.html"));
 });
 
+app.get("/addrecord",(req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/addRecord.html"));
+});
+
+app.post("/addrecord/addRecordToDatabase", (req, res) => {
+    
+    const artistName = req.body.artistName;
+    const recordTitle = req.body.recordTitle;
+    const recordLabel = req.body.recordLabel;
+    const releaseDate = req.body.releaseDate;
+    const tracks = req.body.track;
+
+    (async () => {
+
+        const recordData = await databaseObj.searchRecord(recordTitle);
+        console.log(recordData);
+        if (recordData){   
+            console.log(`Found an existing record with the title: ${recordTitle}, ` + 
+                        `only unique records can be added. Adding record is canceled`);
+            res.sendFile(path.join(__dirname, "/Web-pages/recordAlreadyExists.html"));
+            return; 
+        }
+
+        /*
+        console.log("Record does not exist yet. Adding record is continued.");
+
+        const artistId = await databaseObj.addArtist(artistName);
+        console.log("artistId: ", artistId);
+
+        //const labelId = await databaseObj.addRecordLabel(recordLabel);
+        */
+    })();
+
+    //databaseObj.addRecord(artistName, recordLabel, releaseTitle, releaseDate, tracks);
+    
+   res.redirect("/addrecord");
+});
+
+
+app.listen(port);
+
+
+/*
 //DIG RECORDS
 
 app.get("/digrecords", (req, res) => {
@@ -49,23 +89,6 @@ app.get("/digrecords/displaylabel/getlabeldata/:labelid", (req, res) => {
 });
 
 //ADD RECORDS
-
-app.get("/addrecord",(req, res) => {
-    res.sendFile(path.join(__dirname, "/Web-pages/addRecord.html"));
-});
-
-app.post("/addrecord/addRecordToDatabase", (req, res) => {
-    
-    const artistName = req.body.artistName;
-    const releaseTitle = req.body.releaseTitle;
-    const recordLabel = req.body.recordLabel;
-    const releaseDate = req.body.releaseDate;
-    const tracks = req.body.track;
-
-    databaseObj.addRecord(artistName, recordLabel, releaseTitle, releaseDate, tracks);
-
-   res.redirect("/addrecord");
-});
 
 //SEARCH RECORDS
 
@@ -109,7 +132,7 @@ switch (args) {
     default:
         console.log(`'${args}' is not a command, please try again!`);        
 }
-
+*/
 
 
 
