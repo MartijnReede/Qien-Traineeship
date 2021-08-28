@@ -20,32 +20,47 @@ app.post("/addrecord/addRecordToDatabase", (req, res) => {
     
     const artistName = req.body.artistName;
     const recordTitle = req.body.recordTitle;
-    const recordLabel = req.body.recordLabel;
+    const labelName = req.body.recordLabel;
     const releaseDate = req.body.releaseDate;
     const tracks = req.body.track;
 
     (async () => {
-
-        const recordData = await databaseObj.searchRecord(recordTitle);
-        console.log(recordData);
-        if (recordData){   
-            console.log(`Found an existing record with the title: ${recordTitle}, ` + 
-                        `only unique records can be added. Adding record is canceled`);
-            res.sendFile(path.join(__dirname, "/Web-pages/recordAlreadyExists.html"));
-            return; 
+        
+        const recordExistsInDatabase = await databaseObj.checkIfRecordExists(recordTitle);
+        if (recordExistsInDatabase){
+            res.send(path.join(__dirname, "/Web-pages/recordAlreadyExists.html"));
+            return;
         }
 
-        /*
-        console.log("Record does not exist yet. Adding record is continued.");
+        const artistExistsInDatabase = await databaseObj.checkIfArtistExists(artistName);
+        if (!artistExistsInDatabase) {
+            await databaseObj.addArtist(artistName);
+        }
 
-        const artistId = await databaseObj.addArtist(artistName);
-        console.log("artistId: ", artistId);
+        const artistId = databaseObj.getArtistId(artistName);
 
-        //const labelId = await databaseObj.addRecordLabel(recordLabel);
-        */
+        const labelExistsInDatabase = await databaseObj.checkIfRecordLabelExists(labelName);
+        if (!labelExistsInDatabase){
+            await databaseObj.addRecordLabel(labelName);
+        }
+
+        const labelId = await databaseObj.getRecordLabelId(labelName);
+
+        await databaseObj.addRecord(recordTitle, releaseDate, labelId, artistId);
+        const recordId = await databaseObj.getRecordId(recordTitle);
+
+        try {
+            tracks.forEach((trackTitle) => {
+                await databaseObj.addTrack(trackTitle, recordId);
+            });
+        } catch {
+            await databaseObj.addTrack(tracks, recordId);
+        }
+
+        res.send(path.join(__dirname, "/Web-pages/recordAddedToDatabase.html"));
     })();
 
-    //databaseObj.addRecord(artistName, recordLabel, releaseTitle, releaseDate, tracks);
+
     
    res.redirect("/addrecord");
 });

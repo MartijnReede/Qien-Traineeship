@@ -159,19 +159,61 @@ async function getUserId(userName) {
 
 // Add data functions ---------------------------------------------------------------------------------------------------
 
+async function addRecord(recordTitle, releaseDate, labelId, artistId){
+    const sql = "INSERT INTO records (record_Title, release_date, label_id, artist_id) VALUES (?, ?, ?, ?)";
+    const params = [recordTitle, releaseDate, labelId, artistId];
 
+    await db.execute(sql, params).catch(err => console.log(err.message));
+}
+
+async function addArtist(artistName){
+    const sql = "INSERT INTO artists (artist_name) VALUES (?)";
+    const params = [artistName];
+
+    await db.execute(sql, params).catch(err => console.log(err.message));
+}
+
+async function addRecordLabel(labelName){
+    const sql = "INSERT INTO record_labels (label_name) VALUES (?)";
+    const params = [labelName];
+
+    await db.execute(sql, params).catch(err => console.log(err.message));
+}
+
+async function addUser(userName, userEmail, userHash, userSalt){
+    const sql = "INSERT INTO users (user_name, user_email, user_hash, user_salt) VALUES (?, ?, ?, ?)";
+    const params = [userName, userEmail, userHash, userSalt];
+
+    await db.execute(sql, params).catch(err => console.log(err.message));
+}
+
+async function addTrack(trackTitle, recordId){
+    const sql = "INSERT INTO tracks (track_title, record_id) VALUES (?, ?)";
+    const params = [trackTitle, recordId];
+
+    await db.execute(sql, params).catch(err => console.log(err.message));
+}
+
+// Exports --------------------------------------------------------------------------------------------------------------
 
 const databaseObj = {
     db:db,
-    searchRecord: searchRecord,
-    addArtist: addArtist
+    checkIfRecordExists: checkIfRecordExists,
+    checkIfArtistExists: checkIfArtistExists,
+    checkIfRecordLabelExists: checkIfRecordLabelExists,
+    checkIfUserExists: checkIfUserExists,
+    getRecordId: getRecordId,
+    getArtistId: getArtistId,
+    getRecordLabelId: getRecordLabelId,
+    getUserId: getUserId,
+    addRecord: addRecord,
+    addArtist: addArtist,
+    addRecordLabel: addRecordLabel,
+    addUser, addUser,
+    addTrack, addTrack
 }
 
 module.exports = databaseObj;
-
-
-
-
 
 /*
 
