@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!--Internal stylesheet-->
+    <style>
+        /*Verstandig om al wat styling aan de body mee te geven
+        dit wordt dus ge-inherit door alle ander tags.*/
+        
+        body{
+            font-size: 22px;
+            color: red;
+        }
+
+        /*
+        p {
+          color: blue;
+        }
+        
+        .p-class{
+            color: purple;
+        }
+
+        #p-id{
+            color:red;
+        }
+
+        .class2 {
+            color:aqua; 
+        }
+        
+        .div-color {
+            color: coral;
+        }
+        */
+
+    </style>
+
+    <!-- 
+        Minst naar meer voorrang 
+            1. tag
+            2. class
+            3. class 2 
+            4. id
+            5. inline
+    -->
+
+</head>
+<body>
+    <p>Paragraaf tag</p>
+    <p class="p-class">Paragraaf class</p>
+    <p class="p-class class2">Paragraaf class</p>
+    <p id="p-id">Paragraaf id</p>
+    <p style="color: green">Inline styling</p>
+
+    <div class="div-color">
+            <p>Ik heb geen styling van mijzelf</p>
+    </div>
+
+
+</body>
+</html>

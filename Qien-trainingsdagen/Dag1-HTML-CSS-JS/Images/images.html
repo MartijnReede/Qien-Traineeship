@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-wrapper{
+            width: 600px;
+            height: 120px;
+        }
+
+        .img-1 {
+            height: 100%;
+            width: 100%;
+        }
+
+        .img-2{
+            height: 100%;
+            width: 100%;
+            object-fit: contain; /* vult de div maximaal behalve als de afbeelding vervormd moet worden. */
+        }
+
+        .img-3{
+            height: 100%;
+            width: 100%;
+            object-fit: cover; /* vult de div maximaal, maar het kan zijn dat daarmee een deel van de img wegvalt.*/
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+    <img src="img/persoon.jpg" alt="de afbeelding is niet gevonden.">
+    -->
+
+    <div class="img-wrapper">
+        <img class="img-1" src="img/persoon.jpg" alt="Afbeelding van persoon">
+    </div>
+
+    <div class="img-wrapper">
+        <img class="img-2" src="img/persoon.jpg" alt="Afbeelding van persoon">
+    </div>
+
+    <div class="img-wrapper">
+        <img class="img-3" src="img/persoon.jpg" alt="Afbeelding van persoon">
+    </div>
+
+</body>
+</html>

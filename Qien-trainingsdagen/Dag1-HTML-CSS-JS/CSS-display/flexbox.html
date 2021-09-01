@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        .flex-container {
+            margin: 120px auto;
+            background-color: #E3F2FD;
+            height: 480px;
+            width: 480px;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            flex-wrap: wrap;
+            align-content: space-around;
+            align-items: flex-start;
+        }
+
+        .flex-item {
+            min-width: 15%;
+        }
+
+        .item1 {
+            background-color: #F44336;
+            min-height: 60px;
+            flex-grow: 1;
+        }
+
+        .item2 {
+            background-color: #9C27B0;
+            min-height: 120px;
+            order: 1;
+        }
+
+        .item3 {
+            background-color: #1DE9B6;
+            min-height: 210px;
+        }
+
+        .item4 {
+            background-color: #0288D1;
+            min-height: 80px;
+        }
+
+        .item5 {
+            background-color: yellow;
+            min-height: 100px;
+            order: -1;
+        }
+
+        .cards-wrapper-flex {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #E3F2FD;
+            max-width: 1200px;
+            margin: 120px auto;
+            max-width: 1200px;
+        }
+
+        .card {
+            flex-grow: 1;
+            padding: 32px;
+            background-color: white;
+            margin: 12px;
+            display: flex;
+            max-width: 50%;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .card-img-wrapper{
+            width: 54px;
+            height: 54px;
+            margin-right: 16px;
+            border-radius: 100%;
+            overflow: hidden;
+        }
+
+        /*Geeft stijl aan alle img elementen in de card-img-wrapper class.*/
+        .card-img-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- 
+        - Flex container = div wrapper
+        - Flex items, alle content in de wrapper.
+        - Onderstaand maken we met de items gebruik van dubbele classes.
+    -->
+
+    <div class=flex-container>
+        <div class="flex-item item1"></div>
+        <div class="flex-item item2"></div>
+        <div class="flex-item item3"></div>
+        <div class="flex-item item4"></div>
+        <div class="flex-item item5"></div>
+    </div>
+
+    <div class="cards-wrapper-flex">
+        <div class="card">
+            <div class="card-img-wrapper">
+                    <img src="https://i.guim.co.uk/img/media/1ba9bd4ca9e43b21553fe633830acd6fa1f6071c/0_0_2832_4256/master/2832.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=5da55e5babd2da4a22b1fc9951676b55" alt="Alex Hannold">
+            </div>
+            <div class="card-text-wrapper">
+                <h2>Titel1</h2>
+                <p>Stukje tekst hier</p>
+            </div>
+        </div>    
+
+        <div class="card">
+            <div class="card-img-wrapper">
+                    <img src="https://warriorsway.com/wp-content/uploads/2009/08/Vol-Wall_0294-w900-h700-200x300.jpg" alt="Some climber">
+            </div>
+            <div class="card-text-wrapper">
+                <h2>Titel2</h2>
+                <p>Stukje tekst hier</p>
+            </div>
+        </div>    
+
+        <div class="card">
+            <div class="card-img-wrapper">
+                    <img src="https://scontent-ams4-1.xx.fbcdn.net/v/t1.18169-9/13332852_1209188952457748_3483216287090476006_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=9267fe&_nc_ohc=7naEh1NgtQIAX8idxVL&_nc_ht=scontent-ams4-1.xx&oh=532515f200349cde2e893269ac83fdcb&oe=6151EA06" alt="Flying dutchman">
+            </div>
+            <div class="card-text-wrapper">
+                <h2>Titel 3</h2>
+                <p>Stukje tekst hier</p>
+            </div>
+        </div>    
+    </div>
+</body>
+
+</html>

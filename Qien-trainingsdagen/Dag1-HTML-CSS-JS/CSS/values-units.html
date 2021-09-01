@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        Color values:
+            1: color names.
+            2. hex colors.
+            3. rgb
+            4. rgba
+            5. hsl (mag ik vergeten)
+        */
+
+        p {
+            color: red;
+        }
+
+        p {
+            color: #ff0000;
+        }
+
+        P {
+            color: rgb(255, 0, 0);
+        }
+
+        p {
+            color: rgba(255, 0, 0, 0.5)
+                /*transparantie meegeven. 1=100% 0.5= 50%* 0 =0%*/
+        }
+
+        p {
+            color: hsl(0, 100%, 50%);
+        }
+
+        /*
+            Absolute waarde: 100px.
+            relatieve waarde: 100% (ten opzichte van het element waar het instaat.)
+            vw: vieuw width 50% = 50% van de scherm grootte. 
+            em: hangt af van de font-size. Stel je hebt font-size 10px, dan wordt met 1em de grootte 10px.
+        
+            EDIT: je kan dus ook "vh" gebruiken, dat is dus vieuw heigth.
+        */
+
+        .container{
+            background-color: aqua;
+            width: 100%;
+            max-width: 600px;
+            height: 800px;
+        }
+
+        .block-px {
+            height: 200px;
+            background-color: blueviolet;
+            width: 400px;
+        }
+
+        .block-vw {
+            height: 200px;
+            width: 20vw; /*20% van het scherm.*/
+            background-color: green;
+        }
+
+        .block-pct {
+            height: 200px;
+            width: 20%; /*20% ten opzichte van de container.*/
+            background-color: blue;
+        }
+
+        body {
+            font-size: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <p>Kleur</p>
+
+    <div class="container">
+        <div class="block-px"></div>
+        <div class="block-vw"></div>
+        <div class="block-pct"></div>
+        
+    </div>
+</body>
+
+</html>
