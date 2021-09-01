@@ -1,0 +1,49 @@
+Use case diagram:
+
+- We definieren wie onze applicatie gaan gebruiken en wat zij moeten kunnen doen.
+- Wie zijn de mensen waar we mee te maken hebben. 
+
+ACTOR:
+- Iemand die interactie heeft met het systeem (in dit geval een schoolsysteem). 
+        - Een systeembeheerder.
+        - Een docent.
+        - De rector.
+
+- Iemand kan ook meerdere actoren zijn. Bijvoorbeeld ene docent die cijfers invoert maar ook
+een kind op die school heeft zitten en daar de cijfers van wil inzien als ouder. 
+
+RONDE BOLLETJES (USER CASES):
+- Bijvoorbeeld: we hebben een docent, en dan in het rond bolletje doen we "Cijfers invoeren"
+
+We hebben dan één actor(docent) en één use case (cijfers invoeren).
+
+app.diagrams.net is een mooie plek om dit te doen.
+
+CLASS DIAGRAM:
+    - In Java.
+
+Access modifiers: 
++ public 
+- private
+# protected
+
+
+opbouw functie class diagram: Access modifier + naam v/d methode + argumenten 
+(naam vh argument dan dubbele punt: dan type van het argument (class of int bijv).) en dan een dubbele punt met return type.
+
+Verschillende soorten assosiaties:
+- Pijltje wijst altijd naar de parent class. 
+- Inheritance: pijl met NIET ingekleurd pijltje aan het einde van de lijn. 
+- Composition: pijl met ingekleurd ruitvormig pijltje: Als de parent niet meer bestaat bestaat de child nog wel!
+- Aggregratie: pijl met NIET ingekleurd ruitvormig pijltje: Als de parent niet meer bestaat, bestaat de child ook niet meer.
+
+compositie: persoon en adres. Bestaat de persoon niet meer, dan hoeven we het adres ook niet meer te bewaren. 
+Aggregatie:  motor en auto. Bestaat de auto niet meer, dan kan de motor nog best gebruikt worden in een andere auto. 
+
+
+Hoeveel relatie hebben objecten met elkaar?
+- Bijvoorbeeld een persoon en adres: Een persoon kan geen of maximaal 1 adres gebruiken.  Dan schrijf je op de pijl: 0..1
+- Als er 0 of meer mogelijk zijn dan schrijf je 0..* (0 of meer).
+- Een auto heeft exact 1 motor, dan schrijf je op de pijl 1.
+- Een plaat met 1 of meer artiesten, dan schrijf je op de pijl 1..*
+- De platenmaatschappij kan 0 of meer artiesten hebben. Dan zet je op de pijl 0..*

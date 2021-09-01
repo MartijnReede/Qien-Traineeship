@@ -1,0 +1,36 @@
+Commands: 
+
+        -"pwd"          : huidige locatie (present working directory).
+        -"ls"           : list, laat alle bestanden in pwd zien.
+        -"ls -a         : Laat verborgen bestanden zien die beginnen met een .
+        -"ls --help"    : Dan krijg je de uitleg over alle flags.  
+        -"clear"        : Haalt het hele scherm leeg
+
+        - "esc, :, wq"  : Haalt je uit de VI.
+
+        - "git init"    : Maakt een git repository aan. 
+
+        - pijljtje omhoog   : historische commandos.
+
+Met flags pas je het gedrag van een programma aan. 
+
+git checkout -b testbranch --> maakt nieuwe branch aan. 
+git checkout main --> verplaatst je naar de main branch. Main kan je vervangen voor elke willekeurige naam. 
+
+met > verander je de text in een textbestand.
+met >> voeg je je text toe. 
+
+git merge "naam branch".
+git branch -l laat zien welke branches je allemaal hebt. 
+
+voorbeeld:
+echo hoi ik ben martijn > bestand.txt // bestand.txt bevat nu ALLEEN de tekst hoi ik ben martijn.
+echo hoi nog een zin >> bestand.txt // nu bevat het bestand.txt ook de zin hoi nog een zin. 
+
+rm -rf .git zorgt dat je map geen repository meer is. De .git map is namleijk je repository.  
+
+rm *.txt verwijdert alle txt bestanden in de desbetreffende map. 
+
+met "cat" kunnen we in bash een txt bestandje uitlezen. 
+
+git branch -d testbranch verwijdert de testbranch. 
