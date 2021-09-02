@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    min-width: 960px;
+}
+
+/* Navigation bar -------------------------------------------------------- */
+
+.navbar{
+    height: 100px;
+}
+
+.nav-flex-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.navbar-fortnite-logo{
+  
+}
+
+.navbar-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    
+    overflow: hidden;
+}
+
+.navbar-logo-item{
+    width: 265px;
+    overflow: hidden;
+}
+
+.navbar-middle-item{
+    width: 200px;
+}
+
+.nav-button{
+    background-color: white;
+    outline: none;
+    border: none;
+    font-weight: bold;
+}
+
+.nav-gameplay-button{
+    color: #20A6F5;
+    border-style: solid;
+    border-width: 2px;
+    height: 40px;
+    width: 125px;
+}
+
+.nav-anotherlink1-button{
+    color: #BB5C9B;
+    text-decoration: underline;
+}
+
+.nav-anotherlink2-button{
+    color: #20A6F5;
+    text-decoration: underline;
+}
+
+.navbar-flexitem {
+    flex-grow: 1;
+}
+
+.nav-download-button{
+    background-color: #1a7aea;
+    color: white;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 22px;
+    width: 265px;
+}
+
+/* Main --------------------------------------------------------------------------------------------*/
+
+.middle-part {
+    background-color: #F9F8FD;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle-part-item{
+    height: 90%;
+    min-width: 480px;
+    max-width: 45%;
+}
+
+.middle-picture{
+
+    height: 100%;
+    min-width: 282px;
+}
+
+.item-left{
+    display: flex;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+
+
