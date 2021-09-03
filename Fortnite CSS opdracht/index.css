@@ -5,6 +5,7 @@
 
 body {
     min-width: 960px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Navigation bar -------------------------------------------------------- */
@@ -20,16 +21,11 @@ body {
 
 }
 
-.navbar-fortnite-logo{
-  
-}
-
 .navbar-item{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 75px;
-    
     overflow: hidden;
 }
 
@@ -50,7 +46,8 @@ body {
 }
 
 .nav-gameplay-button{
-    color: #20A6F5;
+    color: #1a7aea;
+    border-color: #20A6F5;
     border-style: solid;
     border-width: 2px;
     height: 40px;
@@ -63,7 +60,7 @@ body {
 }
 
 .nav-anotherlink2-button{
-    color: #20A6F5;
+    color: #1a7aea;
     text-decoration: underline;
 }
 
@@ -83,7 +80,17 @@ body {
     width: 265px;
 }
 
-/* Main --------------------------------------------------------------------------------------------*/
+.nav-download-button:hover{
+    background-color: #20a6f5;
+}
+
+/* Middle --------------------------------------------------------------------------------------------*/
+
+h1 {
+    font-weight: 1000;
+    font-size: 40px;
+    line-height: 45px;
+}
 
 .middle-part {
     background-color: #F9F8FD;
@@ -99,17 +106,155 @@ body {
     max-width: 45%;
 }
 
-.middle-picture{
+.middle-item-wrapper{
+    margin-bottom: 15px;
+}
 
+.middle-text{
+    color: #707070;
+}
+
+.middle-hover-button{
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #1a7aea;
+    border-radius: 5px;
+    width: 160px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 300;
+
+}
+
+.middle-hover-button:hover{
+    background-color: #20a6f5;
+}
+
+.middle-picture{
     height: 100%;
     min-width: 282px;
 }
 
 .item-left{
     display: flex;
+    flex-direction: column;
+    padding-top: 1.2%;
     padding-right: 5%;
     padding-left: 5%;
 }
 
+/* Lower ------------------------------------------------------------------------------ */
+
+.lower-part{
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.lower-card-item{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    margin-top: 20px;
+}
+
+.lower-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.free-fortnite-guy-img{
+    
+    padding-right: 65px;
+}
+
+.lower-img{
+    height: 100%;
+}
+
+.lower-card-text-wrapper{
+    padding-left: 20px;
+    padding-top: 7px;
+}
+
+.lower-card-text{
+    font-weight: bold;
+}
+
+.card-text-3 {
+    text-decoration: underline; 
+    color: #1a7aea;
+}
+
+.card-text-4 {
+    text-decoration: underline;
+    color: #BB5C9B;
+}
+
+.time-display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 17px;
+    background-color: black;
+    position: absolute;
+    margin-top: 210px;
+    margin-left: 265px;
+}
+
+.time-display-free-guy{
+    margin-left: 330px;
+}
+
+.time {
+    color: white;
+    font-size: 10px;
+}
 
 
+/*----PLAY BUTTONS */
+
+
+
+.play-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: White;
+    position:absolute;
+}
+
+.arrow-right {
+    width: 0; 
+    height: 0; 
+    margin-left: 5px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left:10px solid #1a7aea; 
+    position:absolute;
+  }
+
+.play-button-capsule{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255,255,255,0.6);
+    width: 350px;
+    height: 250px;
+    position: absolute;
+}
+
+  
