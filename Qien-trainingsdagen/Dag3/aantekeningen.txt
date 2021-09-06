@@ -1,0 +1,27 @@
+Constanten:
+Maya, max, milo, tafel, stoel, bus 44
+
+Variabelen:
+x/y/z
+
+Predicaten:
+Finn is een kat.
+
+Kan op meerdere predicaten van toepassing zijn. 
+Broers(milo, max).
+
+Predicaten kunnen 2 kanen op. Bijv familie: Broers(x, a) "REFLEXIEF";
+Maar kan ook 1 kant op. Bezit (eigenaar, huis) "ASYMETRISCH";
+"TRANSITIEF" OuderDan(x, y);
+
+Een predicaat is eigenlijk een condition. De uitkomst daarvan is true of false. 
+
+////////////////////
+
+Met het maken van objecten in Java is het belangrijk om te weten dat de linkerkant bepaald bij welke attributen je kan,
+en de rechterkant bepaald bij welke methoden je kan.
+
+Dus Person pers1 = new Leerling();
+
+We kunnen bij de methode van leerling, maar niet bij de attributen van persoon.
+We kunnen bij de attributen van persoon maar niet bij de methoden van leerling. 
