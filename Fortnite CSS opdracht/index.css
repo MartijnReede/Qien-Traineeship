@@ -8,6 +8,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+    font-size: 13px;
+    font-weight: bold;
+    display:block;
+}
+
 /* Navigation bar -------------------------------------------------------- */
 
 .navbar{
@@ -38,30 +44,35 @@ body {
     width: 200px;
 }
 
-.nav-button{
+
+.nav-gameplay-button{
     background-color: white;
     outline: none;
     border: none;
     font-weight: bold;
-}
-
-.nav-gameplay-button{
-    color: #1a7aea;
-    border-color: #20A6F5;
+    color: black;
+    border-color: black;
     border-style: solid;
     border-width: 2px;
     height: 40px;
     width: 125px;
 }
 
-.nav-anotherlink1-button{
-    color: #BB5C9B;
-    text-decoration: underline;
+.nav-gameplay-button:hover{
+    color: #1a7aea;
+    border-color: #20A6F5;
 }
 
-.nav-anotherlink2-button{
+.another-link{
+    color:black;
+}
+
+.another-link:hover{
     color: #1a7aea;
-    text-decoration: underline;
+}
+
+.another-link:visited{
+    color:  #BB5C9B;    
 }
 
 .navbar-flexitem {
@@ -78,6 +89,10 @@ body {
     font-weight: bold;
     font-size: 22px;
     width: 265px;
+}
+
+.a-download-button{
+    text-decoration: none;
 }
 
 .nav-download-button:hover{
@@ -155,10 +170,23 @@ h1 {
 }
 
 .lower-card-item{
+    font-size: 16px;
+    color: black;
     display: flex;
     flex-direction: column;
     margin: 5px;
     margin-top: 20px;
+    text-decoration: underline white;
+}
+
+.lower-card-item:hover{
+    color: #1a7aea;
+    text-decoration: underline;
+}
+
+.lower-card-item:visited{
+    color:  #BB5C9B;
+    text-decoration: underline;
 }
 
 .lower-img-wrapper {
@@ -189,15 +217,6 @@ h1 {
     font-weight: bold;
 }
 
-.card-text-3 {
-    text-decoration: underline; 
-    color: #1a7aea;
-}
-
-.card-text-4 {
-    text-decoration: underline;
-    color: #BB5C9B;
-}
 
 .time-display{
     display: flex;
