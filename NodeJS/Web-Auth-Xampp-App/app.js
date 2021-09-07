@@ -1,7 +1,6 @@
 const express = require("express");
 const databaseObj = require("./database.js");
 const path = require("path");
-const { db } = require("./database.js");
 const app = express();
 const port = 8080;
 
@@ -28,7 +27,7 @@ app.post("/addrecord/addRecordToDatabase", (req, res) => {
         
         const recordExistsInDatabase = await databaseObj.checkIfRecordExists(recordTitle);
         if (recordExistsInDatabase){
-            res.send(path.join(__dirname, "/Web-pages/recordAlreadyExists.html"));
+            res.redirect("/addrecord/recordalreadyexists");
             return;
         }
 
@@ -36,14 +35,12 @@ app.post("/addrecord/addRecordToDatabase", (req, res) => {
         if (!artistExistsInDatabase) {
             await databaseObj.addArtist(artistName);
         }
-
-        const artistId = databaseObj.getArtistId(artistName);
+        const artistId = await databaseObj.getArtistId(artistName);
 
         const labelExistsInDatabase = await databaseObj.checkIfRecordLabelExists(labelName);
         if (!labelExistsInDatabase){
             await databaseObj.addRecordLabel(labelName);
         }
-
         const labelId = await databaseObj.getRecordLabelId(labelName);
 
         await databaseObj.addRecord(recordTitle, releaseDate, labelId, artistId);
@@ -51,29 +48,25 @@ app.post("/addrecord/addRecordToDatabase", (req, res) => {
 
         try {
             tracks.forEach((trackTitle) => {
-                await databaseObj.addTrack(trackTitle, recordId);
+                databaseObj.addTrack(trackTitle, recordId);
             });
         } catch {
-            await databaseObj.addTrack(tracks, recordId);
+                databaseObj.addTrack(tracks, recordId);
         }
-
-        res.send(path.join(__dirname, "/Web-pages/recordAddedToDatabase.html"));
+        res.redirect("/addrecord/recordaddedtodatabase");
     })();
-
-
-    
-   res.redirect("/addrecord");
 });
 
+app.get("/addrecord/recordaddedtodatabase", (req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/recordAddedToDatabase.html"));
+});
 
-app.listen(port);
-
-
-/*
-//DIG RECORDS
+app.get("/addrecord/recordalreadyexists", (req, res) => {
+    res.sendFile(path.join(__dirname, "/Web-pages/recordalreadyexists.html"))
+});
 
 app.get("/digrecords", (req, res) => {
-     res.sendFile(path.join(__dirname, "/Web-pages/digRecords.html"));
+    res.sendFile(path.join(__dirname, "/Web-pages/digRecords.html"));
 });
 
 app.get("/digrecords/displayrecord/:recordId", (req, res)=> {
@@ -82,8 +75,49 @@ app.get("/digrecords/displayrecord/:recordId", (req, res)=> {
 
 app.get("/digrecords/displayrecord/getrecorddata/:recordid", (req, res) => {
     const recordId = req.params.recordid;
-    databaseObj.getRecordData(recordId, res);
+    
+    (async () => { 
+        const jsonData = await databaseObj.getRecordById(recordId);
+        res.send(jsonData);
+    })();
 });
+
+app.get("/searchrecords/:searchinput/:category", (req, res) => {
+    const searchInput = req.params.searchinput;
+    const category = req.params.category;
+    let jsonData = [{searchType: category}]; 
+    let data;
+
+    (async () => {
+        switch(category){
+            case "records":
+                data = await databaseObj.searchRecords(searchInput);
+                break;
+            case "artists":
+                data = await databaseObj.searchArtists(searchInput);
+                break;
+            case "recordLabels":
+                data = await databaseObj.searchRecordLabels(searchInput);
+                break;
+            case "tracks":
+                data = await databaseObj.searchTracks(searchInput);
+                break;        
+        }
+
+        data.forEach(row => {
+            jsonData.push(row);
+        })
+        res.send(jsonData);
+    })();
+});
+
+app.listen(port);
+
+/*
+//DIG RECORDS
+
+
+
 
 app.get ("/digrecords/displayartist/:artistid", (req, res) => {
     res.sendFile(path.join(__dirname, "/Web-pages/displayArtist.html"));
@@ -103,53 +137,9 @@ app.get("/digrecords/displaylabel/getlabeldata/:labelid", (req, res) => {
     databaseObj.getLabelData(labelId, res);
 });
 
-//ADD RECORDS
-
-//SEARCH RECORDS
-
-app.get("/searchrecords/:searchinput/:category", (req, res) => {
-    const searchInput = req.params.searchinput;
-    const category = req.params.category;
-    databaseObj.searchForData(searchInput,category, res);
-});
-
 //RUNNING SERVER
 
 app.listen(port, () => {
     console.log("Server is running!");
 });
-
-//CLI voor DEV ------------------------------------------------------------------------------------------------------------
- 
-let args = process.argv.slice(2)[0];
-
-switch (args) {
-    case "printall": 
-        databaseObj.printArtists();
-        databaseObj.printLabels();
-        databaseObj.printReleases();
-        databaseObj.printTracks();
-        break;
-    case "printartists":
-        databaseObj.printArtists();
-        break;
-    case "printlabels":
-        databaseObj.printLabels();
-        break;
-    case "printreleases":
-        databaseObj.printReleases();
-        break;
-    case "printtracks":
-        databaseObj.printTracks();
-        break;
-    case undefined:
-        break;    
-    default:
-        console.log(`'${args}' is not a command, please try again!`);        
-}
 */
-
-
-
-
-

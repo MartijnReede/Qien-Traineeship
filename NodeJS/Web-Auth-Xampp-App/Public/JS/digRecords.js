@@ -24,117 +24,125 @@
         }
 
         const searchType = data[0].searchType;
-    
+
         switch(searchType){
-
             case "records":
-                
-                for (let i = 1; i < data.length; i++){
-                    
-                    let recordValueNames = ["Title: ", "Artist: ", "Label: ", "Release date: "]; 
-                    let recordDataValues = [data[i].releaseTitle, data[i].artistName, data[i].labelName, data[i].releaseDate]
-                    
-                    let resultContainer = document.createElement("div");
-                    resultContainer.setAttribute("class", "resultContainer");
-
-                    let resultRowsContainer = document.createElement("div");
-                    resultRowsContainer.setAttribute("class", "resultRowsContainer")
- 
-                    for (let j = 0; j < recordValueNames.length; j++){
-                         let dataResultRow = constructResultRow(recordValueNames[j], recordDataValues[j]);
-                         resultRowsContainer.appendChild(dataResultRow)
-                    }
-
-                    resultContainer.appendChild(resultRowsContainer);
-                    
-                    let buttonForm = constructFormButton("Select record", "/digrecords/displayrecord/" + data[i].releaseId, "selectRecord");
-                    resultContainer.appendChild(buttonForm);
-                    
-                    searchResultsContainer.appendChild(resultContainer);
-                }
+                displayRecords(data);
                 break;
-
             case "artists":
-                 
-                 for (let i = 1; i < data.length; i++){
-                 
-                    let artistValueNames = ["Artist: "];
-                    let artistDataValues = [data[i].artistName];
-                    
-                    let resultContainer = document.createElement("div");
-                    resultContainer.setAttribute("class", "resultContainer");
-
-                    let resultRowsContainer = document.createElement("div");
-                    resultRowsContainer.setAttribute("class", "resultRowsContainer");
-
-                    for (let j = 0; j < artistValueNames.length; j++){
-                        let dataResultRow = constructResultRow(artistValueNames[j], artistDataValues[j]);
-                        resultRowsContainer.appendChild(dataResultRow);
-                    }
-
-                    resultContainer.appendChild(resultRowsContainer);
-                    
-                    let buttonForm = constructFormButton("Select artist", "/digrecords/displayartist/" + data[i].artistId, "selectArtist");
-                    resultContainer.appendChild(buttonForm);
-                    
-                    searchResultsContainer.appendChild(resultContainer);
-                }
+                displayArtists(data);
                 break;
-            
             case "recordLabels":
-
-                for (let i = 1; i< data.length; i++){
-
-                    let labelValueNames = ["Label: "];
-                    let labelDataValues = [data[i].labelName];
-
-                    let resultContainer = document.createElement("div");
-                    resultContainer.setAttribute("class", "resultContainer");
-
-                    let resultRowsContainer = document.createElement("div");
-                    resultRowsContainer.setAttribute("class", "resultRowsContainer");
-
-                    for (let j = 0; j < labelValueNames.length; j++){
-                        let dataResultRow = constructResultRow(labelValueNames[j], labelDataValues[j]);
-                        resultRowsContainer.appendChild(dataResultRow);
-                    }
-
-                    resultContainer.appendChild(resultRowsContainer);
-                    
-                    let buttonForm = constructFormButton("Select label", "/digrecords/displaylabel/" + data[i].labelId, "selectLabel");
-                    resultContainer.appendChild(buttonForm);
-                    
-                    searchResultsContainer.appendChild(resultContainer);
-                }
+                displayRecordLabels(data);
                 break;
-
             case "tracks":
-        
-                for (let i = 1; i < data.length; i++){
-
-                    let trackValueNames = ["Track: ", "Release: ", "Artist: "];
-                    let trackDataValues = [data[i].trackName, data[i].releaseTitle, data[i].artistName];
-
-                    let resultContainer = document.createElement("div");
-                    resultContainer.setAttribute("class", "resultContainer");
-
-                    let resultRowsContainer = document.createElement("div");
-                    resultRowsContainer.setAttribute("class", "resultRowsContainer");
-
-                    for (let j = 0; j < trackValueNames.length; j++){
-                        let dataResultRow = constructResultRow(trackValueNames[j], trackDataValues[j]);
-                        resultRowsContainer.appendChild(dataResultRow);
-                    }
-
-                    resultContainer.appendChild(resultRowsContainer);
-                    
-                    let buttonForm = constructFormButton("Select track", "/digrecords/displayrecord/" + data[i].releaseId, "selectTrack");
-                    resultContainer.appendChild(buttonForm);
-                    
-                    searchResultsContainer.appendChild(resultContainer);
-                }
+                displayTracks(data);
                 break;
             }
+    }
+
+    function displayRecords(data){
+        for (let i = 1; i < data.length; i++){
+                    
+            let recordValueNames = ["Title: ", "Artist: ", "Label: ", "Release date: "]; 
+            let recordDataValues = [data[i].record_title, data[i].artist_name, data[i].label_name, data[i].release_date]
+            
+            let resultContainer = document.createElement("div");
+            resultContainer.setAttribute("class", "resultContainer");
+
+            let resultRowsContainer = document.createElement("div");
+            resultRowsContainer.setAttribute("class", "resultRowsContainer")
+
+            for (let j = 0; j < recordValueNames.length; j++){
+                 let dataResultRow = constructResultRow(recordValueNames[j], recordDataValues[j]);
+                 resultRowsContainer.appendChild(dataResultRow)
+            }
+
+            resultContainer.appendChild(resultRowsContainer);
+            
+            let buttonForm = constructFormButton("Select record", "/digrecords/displayrecord", "selectRecord", data[i].record_id);
+            resultContainer.appendChild(buttonForm);
+            
+            searchResultsContainer.appendChild(resultContainer);
+        }
+    }
+
+    function displayArtists(data){
+        for (let i = 1; i < data.length; i++){
+                 
+            let artistValueNames = ["Artist: "];
+            let artistDataValues = [data[i].artist_name];
+            
+            let resultContainer = document.createElement("div");
+            resultContainer.setAttribute("class", "resultContainer");
+
+            let resultRowsContainer = document.createElement("div");
+            resultRowsContainer.setAttribute("class", "resultRowsContainer");
+
+            for (let j = 0; j < artistValueNames.length; j++){
+                let dataResultRow = constructResultRow(artistValueNames[j], artistDataValues[j]);
+                resultRowsContainer.appendChild(dataResultRow);
+            }
+
+            resultContainer.appendChild(resultRowsContainer);
+            
+            let buttonForm = constructFormButton("Select artist", "/digrecords/displayartist/" + data[i].artist_id, "selectArtist");
+            resultContainer.appendChild(buttonForm);
+            
+            searchResultsContainer.appendChild(resultContainer);
+        }
+    }
+
+    function displayRecordLabels(data){
+        for (let i = 1; i< data.length; i++){
+
+            let labelValueNames = ["Label: "];
+            let labelDataValues = [data[i].label_name];
+
+            let resultContainer = document.createElement("div");
+            resultContainer.setAttribute("class", "resultContainer");
+
+            let resultRowsContainer = document.createElement("div");
+            resultRowsContainer.setAttribute("class", "resultRowsContainer");
+
+            for (let j = 0; j < labelValueNames.length; j++){
+                let dataResultRow = constructResultRow(labelValueNames[j], labelDataValues[j]);
+                resultRowsContainer.appendChild(dataResultRow);
+            }
+
+            resultContainer.appendChild(resultRowsContainer);
+            
+            let buttonForm = constructFormButton("Select label", "/digrecords/displaylabel/" + data[i].label_id, "selectLabel");
+            resultContainer.appendChild(buttonForm);
+            
+            searchResultsContainer.appendChild(resultContainer);
+        }
+    }
+
+    function displayTracks(data){       
+        for (let i = 1; i < data.length; i++){
+
+            let trackValueNames = ["Track: ", "Release: ", "Artist: "];
+            let trackDataValues = [data[i].track_title, data[i].record_title, data[i].artist_name];
+
+            let resultContainer = document.createElement("div");
+            resultContainer.setAttribute("class", "resultContainer");
+
+            let resultRowsContainer = document.createElement("div");
+            resultRowsContainer.setAttribute("class", "resultRowsContainer");
+
+            for (let j = 0; j < trackValueNames.length; j++){
+                let dataResultRow = constructResultRow(trackValueNames[j], trackDataValues[j]);
+                resultRowsContainer.appendChild(dataResultRow);
+            }
+
+            resultContainer.appendChild(resultRowsContainer);
+            
+            let buttonForm = constructFormButton("Select track", "/digrecords/displayrecord/" + data[i].record_id, "selectTrack");
+            resultContainer.appendChild(buttonForm);
+            
+            searchResultsContainer.appendChild(resultContainer);
+        }
     }
 
     function clearSearchResultsContainer(){
@@ -191,7 +199,7 @@
         return recordResultRow;
     }
 
-    function constructFormButton(text, action, className){
+    function constructFormButton(text, action, className, id){
 
         let buttonForm = document.createElement("form");
         buttonForm.setAttribute("method", "GET");
@@ -202,6 +210,8 @@
         button.setAttribute("type", "submit");
         button.setAttribute("class", className);
         button.setAttribute("value", text);
+        button.setAttribute("") //////////////////////////////////////////////////////////
+        button.onclick = ///////////////////////////////////////////////
 
         buttonForm.appendChild(button);
 

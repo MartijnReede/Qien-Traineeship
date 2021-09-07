@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/CSS/navBar.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/addRecordResult.css">
+    <title>Record added to database</title>
+</head>
+
+<body>
+    <span class="titleContainer">
+        <h1>SUCCESS</h1>
+        <img class="recordLogo" src="/Record-Logo.png">
+
+        <form class="menuForm" method="GET" action="/collection">
+            <button class="menuButton" id="collectionMenuButton">COLLECTION</button>
+        </form>
+
+        <form class="menuForm" method="GET" action="/addrecord">
+            <button class="menuButton" id="addRecordMenuButton">ADD RECORD</button>
+        </form>
+
+        <form class="menuForm" method="GET" action="/digrecords">
+            <button class="menuButton" id="digRecordsMenuButton">DIG RECORDS</button>
+        </form>
+
+        <form class="menuForm" method="GET" action="/">
+            <button class="menuButton" id="homeMenuButton">HOME</button>
+        </form>
+    </span>
+    <hr />
+
+    <div class="messageContainer1">
+        <div class="messageContainer2">
+            <p class="containerMessage">The record is added to the database!</p>
+        </div>
+    </div>
+</body>
+
+</html>

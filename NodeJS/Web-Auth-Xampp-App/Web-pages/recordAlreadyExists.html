@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Record already exists</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/navBar.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/addRecordResult.css">
 </head>
+
 <body>
-    <p>The record you're trying to add already exist in our database. Only unique records can be added.</p>
+  <span class="titleContainer">
+    <h1>FAILED</h1>
+    <img class="recordLogo" src="/Record-Logo.png">
+
+    <form class="menuForm" method="GET" action="/collection">
+      <button class="menuButton" id="collectionMenuButton">COLLECTION</button>
+    </form>
+
+    <form class="menuForm" method="GET" action="/addrecord">
+      <button class="menuButton" id="addRecordMenuButton">ADD RECORD</button>
+    </form>
+
+    <form class="menuForm" method="GET" action="/digrecords">
+      <button class="menuButton" id="digRecordsMenuButton">DIG RECORDS</button>
+    </form>
+
+    <form class="menuForm" method="GET" action="/">
+      <button class="menuButton" id="homeMenuButton">HOME</button>
+    </form>
+  </span>
+  <hr/>
+
+  <div class="messageContainer1">
+    <div class="messageContainer2">
+      <p class="containerMessage">The record already exists in the database, only unique records can be added.</p>
+    </div>
+  </div>
+
 </body>
+
 </html>

@@ -15,20 +15,20 @@
 
     function createPageElements(data){
 
-        artistPageForm.setAttribute("action", `/digrecords/displayartist/${data[0].artistId}`);
-        labelPageForm.setAttribute("action", `/digrecords/displaylabel/${data[0].labelId}`);
+        artistPageForm.setAttribute("action", `/digrecords/displayartist/${data[0].artist_id}`);
+        labelPageForm.setAttribute("action", `/digrecords/displaylabel/${data[0].label_id}`);
 
-        const releaseTitleData = data[0].releaseTitle;
-        const artistData = data[0].artistName;
-        const recordLabelData = data[0].labelName;
-        const releaseDateData = data[0].releaseDate;
-
+        const releaseTitleData = data[0].record_title;
+        const artistData = data[0].artist_name;
+        const recordLabelData = data[0].label_name;
+        const releaseDateData = data[0].release_date;
+        
         releaseTitle.innerHTML = releaseTitleData;
         artist.innerHTML = artistData;
         label.innerHTML = recordLabelData;
         releaseDate.innerHTML = releaseDateData;
 
-        for (let i = 1; i < data.length; i++){
+        for (let i = 0; i < data.length; i++){
            
             let recordInfoRow = document.createElement("div");
             recordInfoRow.setAttribute("class", "recordInfoRow");
@@ -38,7 +38,7 @@
 
             let text1 = document.createElement("text");
             text1.setAttribute("class", "resultInfo");
-            text1.innerHTML = data[i].trackNumber + ": ";
+            text1.innerHTML = (i + 1) + ": ";
 
             col25.appendChild(text1);
             recordInfoRow.appendChild(col25);
@@ -48,7 +48,7 @@
 
             let text2 = document.createElement("text");
             text2.setAttribute("class", "resultInfo");
-            text2.innerHTML = data[i].trackName;
+            text2.innerHTML = data[i].track_title;
 
             if (i === data.length - 1) {
                 col25.setAttribute("style", "padding-bottom: 30px;")
