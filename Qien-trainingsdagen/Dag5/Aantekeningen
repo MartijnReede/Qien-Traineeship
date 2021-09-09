@@ -1,0 +1,128 @@
+IDE = Integrated development environment.
+
+We gaan zelf een applicatie maken met mendix.
+
+Product backlog is een to-do lijstje. Een to-do lijstje van een use-cases.
+
+Een sprint bestaat uit een periode van 1 a 2 a 3 weken. Tijdens deze sprint zijn er 
+4 evenementen:
+1. de sprint zelf
+2. spring planning 
+3. sprint review 
+4. sprint retrospective.
+
+Elke dag: daily stand-up (kort overleg).
+
+Waar werken we dan aan tijdens die sprint? Aan artifacts oftewel documenten. 
+Één van die documenten is de product backlog. Deze bestaat uit product backlog items. Backlog items zijn ook wel userstories en ook wel use cases. Deze drie termen betekenen hetzelfde. 
+
+De productbacklog is klein, is een functionaliteit, en is geformuleerd als: 
+    - ik als klant kan alle fietsen zien.
+    - ik als medewerker kan een fiets aanmaken.
+    - ik als wergever kan de verkoopcijfers zien. 
+
+De drie bovenstaande backlog items zijn nog niet gepland. Dit doen we in de sprint-backlog. 
+
+Heel belangrijk: we gaan met sprints altijd aan de slag met een class diagram - UML en sprint backlog. 
+
+MVC - model view controller - design pattern.
+
+
+model - informatie dat in de database wordt opgeslagen, dit is presistente data. Persistente data overleeft  een reboot. 
+
+View - html pagina.
+
+controller - de software zelf --> microFlows.
+
+------------------------------------------------------
+
+UML - Unified Modeling Language. Het is een tekentaal. Er zijn afspraken over tekeningen. 
+
+Stap 1: Het use-case-diagram.
+
+    We kunnen dit maken met draw.io ONLINE
+
+    Brainstormsessie, mag fantasie zijn, hetgeen wat hier bedacht wordt hoeft niet uiteindelijk uitgevoerd te worden. 
+
+    Gebruikers en het systeem weergeven (actors zijn gebruikers van het systeem). In het systeem geef je de handelingen weer die de applicatie moet kunnen. (het voorbeeld wat ik had gemaakt met The Crag.).
+
+    Hierin hoeft niet alles vastgelegd te worden. Dit is globaal. 
+    - Een include is een handeling die altijd OOK gedaan moet worden.
+    - Een extend is een optionele handeling. 
+
+    Bijvoorbeeld een pinautomaat: De pincode invoeren is include / een biljetkeuze maken is optioneel dus extend. 
+
+    Het use-case diagram voorkomt het plannen van een wonder systeem. Bijvoorbeeld, als iemand allerlei info uit een systeem kan halen, moeten we er ook over nadenken hoe die info dan in het systeem komt. Dat deze informatie dus niet op wonderlijke wijze in de database verschijnt. 
+
+    MosCow principe: outdated methode.
+    - Must have 
+    - Should have 
+    - Could have 
+    - Won't have
+
+    Nieuwe methode: "backlog". Alle items worden op een volgorde gezet. Van belangrijk naar onbelangrijk. De sprints worden uitegevoegd op belangrijkheid. 
+
+    Tussen de sprints door kunnen er meerdere kaartjes bijkomen. 
+
+Stap 2:  Use case requirments diagram.
+    
+    Van elk bolletje in de use-case-diagram wordt nog een heel gedetaileerd diagram gemaakt. 
+
+    preconditions -> voorwaarden voordat deze handeling kan worden aangevangen. 
+
+    --- Winkelen ---
+    - precondition: Naar de winkel gaan, kleren uitzoeken, naar de kassa gaan.  
+    - postconditie: Kleren gekocht.
+    - alternate course: Mijn pin doet het niet, maar ik heb wel cash. (de postconditie zal dus alsnog worden bereikt).
+    - exception: Ik kom aan als de winkel niet open is. 
+
+TUSSENSTAP: T-splitsing:
+We moeten nu 2 dingen maken:
+1. wire frame
+2. class-diagram. 
+
+Stap 3: Wire frame.
+    - Handig programma hiervoor is: balsamiq. 
+    - Hiermee maak je een ontwerp van de applicatie. Wat gebeurt er als je waarop klikt? 
+    - Het hoogste doel is om duidelijk te maken wat we gaan maken aan de klant. Je maakt dit met werkende knoppen. 
+
+Stap 4: Class diagram.
+    We hoeven de methodes niet  te maken nu. 
+
+    Holle pijl = is-a relatie. 
+    Dit kan in state of state-less zijn. 
+    - De state van een mens-object is bijvoorbeeld: naam: martijn / leeftijd: 30 etc. 
+    - stateless --> is-a interface relatie. 
+
+    vaste pijl = class extend
+    stippellijn pijl =  interface extend. 
+
+    open ruitje --> Wanneer iets afwezig is, kunnen die functionaliteiten niet worden verwacht.  
+    
+    dicht ruitje --> De classificatie veranderd. Bijvoorbeeld, we halen het frame uit de fiets, niemand zal dat meer classifiseren als een fiets. 
+
+-------------------------
+
+Assosiaties:
+
+- has-a relatie: Ben ik een stoel? Of heb ik een stoel? Een dependency. een Mens HEEFT een telefoon.
+- is-a relatie: een Mens IS een mens.
+
+Bij een has-a relatie is er geen sprake van een richting. Je zou kunnen discusseren dat de telefoon van een mens is of de mens van een telefoon. In programmeren is dit gelijkwaardig. Een
+
+multipliciteit = One to many, many to one, many to many. 
+Monodirectioneel: één kant op. Bijvoorbeeld, we kunnen via de telefoon  
+
+is-a heeft altijd een richting: Pizza is eten maar eten is niet pizza.  
+
+-----------------------------
+
+Is-a relatie is inheritance. Dus een konijnen IS een dier.
+
+Verschil parameter en agument
+
+public void setName(String name){
+    //name is de parameter.
+}
+
+Obj.setName("Harry"); //Harry is argument. 

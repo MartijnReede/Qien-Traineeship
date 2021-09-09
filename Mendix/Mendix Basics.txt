@@ -1,0 +1,15 @@
+App development process is gedefinieerd als een combinatie van Dev-Ops en Agile. 
+
+Product owner       -->  Iemand van het bedrijf / de opdrachtgever. 
+Business analyst    -->  Vertaald de behoeften naar user-stories.
+
+1. business analyst + developers ontwikkelen de applicatie web/desktop model.
+2. Model wordt geupdate naar de cloud.
+3. Applicatie wordt getest door de users en geven feedback. 
+4. Feedback wordt overhandigd aan de product owner, en vervolgens begint het hele proces opnieuw. 
+
+---------
+
+Domain models:
+
+    - Is een visuele representatie van je database. 

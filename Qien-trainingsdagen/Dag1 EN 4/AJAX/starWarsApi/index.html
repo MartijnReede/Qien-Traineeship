@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<style>
+		* {
+			margin: 0;
+			boxsizing: border-box;
+
+		}
+
+		body {
+			font-size: 18px;
+			color: #212121;
+			background-color: #f8f8f8;
+		}
+
+		header {
+			padding: 120px 0;
+		}
+
+		section {
+			80px 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			width: 100%;
+			padding: 0 80px 0 80px;
+		}
+
+		.star-wars-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 20px;
+		}
+
+    .held {
+      padding: 28px;
+      background-color: white;
+      box-shadow: 0px 0px 24px 0 rgba(0,0,0,0,0.06);
+      border-radius: 24px;
+    }
+
+
+
+
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h1>Star Wars!</h1>
+		</div>
+	</header>
+	<main>
+		<section>
+			<div class="container">
+				<div class="star-wars-grid" id="grid">
+
+					<div class="held">
+						<h2>Naam</h2>
+						<div>Height: height</div>
+						<div>Geboortejaar: geboortejaar</div>
+					</div>
+					<div class="held">
+						<h2>Naam</h2>
+						<div>Height: height</div>
+						<div>Geboortejaar: geboortejaar</div>
+					</div>
+					<div class="held">
+						<h2>Naam</h2>
+						<div>Height: height</div>
+						<div>Geboortejaar: geboortejaar</div>
+					</div>
+					<div class="held">
+						<h2>Naam</h2>
+						<div>Height: height</div>
+						<div>Geboortejaar: geboortejaar</div>
+					</div>
+					<div class="held">
+						<h2>Naam</h2>
+						<div>Height: height</div>
+						<div>Geboortejaar: geboortejaar</div>
+					</div>
+          <div>
+            <button onclick="getSwapi()">Click me!</button>
+          </div>
+
+				</div>
+			</div>
+		</section>
+	</main>
+	<script>
+		var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+          if (xhr.status === 200){
+            
+            //Zet de lange String om in JS objecten.
+            let helden = JSON.parse(xhr.responseText);
+            
+            let heldenHTML = "";
+
+            for (let i= 0; i< helden.results.length; i++){
+              heldenHTML += `
+              <div class="held">
+						  <h2>${helden.results[i].name}</h2>
+						  <div>Height: ${helden.results[i].height}</div>
+						  <div>Geboortejaar: ${helden.results[i].birth_year}</div>
+					    </div>
+              `
+              //console.log(helden.results[i].name);
+            }
+            document.getElementById("grid").innerHTML = heldenHTML;
+
+          }
+        }
+      }
+
+      function getSwapi(){
+        xhr.open('GET', "https://swapi.dev/api/people");
+        xhr.send();
+      }
+	</script>
+</body>
+
+</html>

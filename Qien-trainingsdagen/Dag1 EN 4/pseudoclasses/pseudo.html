@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            background-color: blue;
+            transition: all 1s; /*De div zal nu in 1 seconde transformeren.*/
+            width: 100px;
+            height: 100px;
+        }
+
+        .div1:hover{
+            background-color: red;
+            transform: scale(1.4); /*Groeien*/
+        }
+
+        .div2 {
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            transition: all 1s;
+        }
+
+        .div2:hover{
+            transform: translate(20px, 20px); /*verplaatsen*/
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    Psuedoclasses zijn :hover / :visited
+
+    <div class="div1"></div>
+    <div class="div2"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="huisdier.js"></script>
+    <script src="eigenaar.js"></script>
+    <script>
+
+        let dier1 = new Huisdier("Kat", 5, "Miauwwww!");
+        let dier2 = new Huisdier("Hond", 3, "WoefWoef!");
+
+        console.log(dier1);
+        dier1.spreken();
+        dier2.spreken();
+
+        console.log(dier1.activiteit);
+
+        let karel = new Eigenaar("Karel", "straat 12");
+        karel.telefoonNr = "53893235235";
+        console.log(karel)
+        console.log(karel.telefoonNr);
+
+        dier1.eigenaar = karel;
+        console.log(dier1.eigenaar);
+        console.log(dier1.eigenaar.telefoonNr);
+
+    </script>
+</body>
+</html>

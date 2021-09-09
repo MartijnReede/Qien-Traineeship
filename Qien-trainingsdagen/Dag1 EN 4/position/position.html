@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+
+    body {
+        height: 200vw;
+    }
+
+    .wrapper{
+        height: 400px;
+        width: 400px;
+        background-color: aqua;
+        position: relative;
+    }
+
+    .div1, .div2 {
+        width: 100px;
+        height: 100px;
+    }
+
+    .div1 {
+        background-color: red;
+        position: static;
+        top: 40px;
+        left: 40px;
+    }
+
+    .div2 {
+        background-color: green;
+        position: relative;
+        top: 40px;
+        left: 40px;
+    }
+
+    .div3 {
+        background-color: yellow;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .div4 {
+        width: 100vw;
+        height: 80px;
+        background-color: brown;
+        position: fixed;
+        z-index: 999;
+    }
+
+    .sidebar {
+        position: absolute;
+        height: 100vh;
+        width: 400px;
+        right: 0;
+        top: 0;
+        background-color: cornsilk;
+    }
+
+    .sticky {
+        width: 100%;
+        height: 200px;
+        background-color: pink;
+        position: sticky;
+        top:90px; /* Na 80 px zal hij niet meer mee scrollen */
+    }
+
+</style>
+</head>
+<body>  
+
+
+
+    <div class="wrapper">
+        
+        <div class="div4"></div>
+        
+        <div class="div1">
+            <div class="div3"></div>
+        </div>
+        <div class="div2">
+            <div class="div3"></div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sticky">HALLOOOO</div>
+    </div>
+
+    By default is de positie waarde static. 
+
+    Iets wat absoluut gepositioneerd is zoekt naar een parent die
+    NIET static is gepositioneerd. Daarom verplaatst het gele blokje zich
+    naar de hoek van het aqua divje. 
+
+    iets fixed positioneren is bijvoorbeeld een navigatiebalk die altijd
+    in zicht blijft ook al scroll je naar beneden. 
+
+    met de z-index kunnen we de volgorde instellen, bijvoorbeeld dat 
+    de navigatiebalk over alle andere elementen heen gaat. De z-index die hoger
+    is gaat over een element met een lagere z-index.
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //Object literals
+        let student1 = "karel"; //simpele variabele
+        let studentObj = {
+            naam: "Karel",
+            leeftijd: 24,
+            geslaagd: false
+        }
+
+        //console.log(studentObj); //ophalen object
+        //console.log(studentObj.naam); //ophalen naam
+        //console.log(studentObj["naam"]); //ophalen met breacket notation
+        studentObj.cijferLijst = [6, 3, 2, 1, 5];
+        //console.log(studentObj);
+        console.log(`Hoi ik ben ${studentObj.naam} en ik ben ${studentObj.leeftijd} jaar oud.` +
+                    `Mijn cijfers zijn: ${studentObj.cijferLijst.toString()}.`);
+
+        //De for-in loop, hiermee print je alle variabele namen uit.
+        for (let prop in studentObj){
+            console.log(prop);
+        }
+
+        //Het onderstaande moet met bracket notation.
+        for (let prop in studentObj){
+            console.log(`${prop}: ${studentObj[prop]}`);
+        }
+
+        //Object arrays
+        const vragenLijst = [
+            {
+                vraag: "Hoeveel is 2 + 2?",
+                antwoord: "4"
+            },
+            {
+                vraag: "Wat is de hoofdstad van Drenthe?",
+                antwoord: "Assen"
+            },
+            {
+                vraag: "Hoe heet de koning?",
+                antwoord: "Willem"
+            }
+        ];
+
+
+
+    </script>
+
+</body>
+</html>

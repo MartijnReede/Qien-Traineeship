@@ -1,0 +1,8 @@
+/*
+
+    In javascript mag je vanalles in een array stoppen. 
+
+    Sessionstorage wordt gebruikt met bijvoorbeeld winkelmandjes op websites.
+    
+
+*/

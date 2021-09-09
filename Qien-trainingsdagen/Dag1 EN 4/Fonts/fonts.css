@@ -1,0 +1,33 @@
+/* We kunnen via google fonts leuke fonts uitkiezen! Via w3 schools kunnen we kijken
+hoe we deze moeten inladen. Dit doe je alsof je een stylesheet inlaadt.*/
+
+/*Een span kunnen we ook gebruiken voor tekst!!*/
+
+* {
+    margin:  0; /* Alle elementen hebben nu geen margin. Zo kunnen we alles zelf bepalen.*/ 
+}
+
+body {
+    color: red;
+}
+
+h1 {
+    color: green;
+    font-family: 'Aguafina Script';
+    font-size: 30px;
+    font-weight: 100;
+}
+
+/* hiermee selecteer ik alle b-tags die in een P tag zitten. */
+
+p b {
+    color: blue;
+}
+
+p i {
+    color: orange;
+}
+
+.random {
+    font-family: 'ZCOOL KuaiLe'
+}

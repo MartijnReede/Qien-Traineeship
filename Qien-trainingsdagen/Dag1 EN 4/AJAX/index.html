@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Kom maar op met de AJAX</h1>
+    <div id="ajax">
+
+    </div>
+    <button onclick="ophalen()">Klik mij</button>
+
+    <script>
+        var xhr = new XMLHttpRequest(); //stap 1 maak een xml http request object aan. 
+        //xhr object heeft een status (0 tm 4);
+        //Stap 2: Zodra de status ready is wordt deze soort van callbackfunction uitgevoerd. 
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log("ready");
+                    document.getElementById("ajax").innerHTML = xhr.responseText;
+                } else if (xhr.status === 404){
+                    console.log("Not found!");
+                }
+            }
+        };
+
+        function ophalen(){
+        xhr.open("GET", "ajax.html"); //stap 3: openen van een request
+        xhr.send(); //versturen van het verzoek. 
+        }
+    </script>
+</body>
+</html>

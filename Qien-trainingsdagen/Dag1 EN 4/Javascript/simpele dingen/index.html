@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+        <label for="fname">Enter your name</label>
+        <input type="text" id="fname" name="fname">
+        <button id="submitButton">Sla naam op</button>
+        <button id="haalNaamOp">Haal naam op</button>
+
+
+    <script>
+        
+        let inputNaam = document.getElementById("fname");
+        let submitButton = document.getElementById("submitButton");
+        let haalNaamButton = document.getElementById("haalNaamOp");
+
+        submitButton.onclick = getName;
+        
+        function getName(){
+            console.log(inputNaam.value);
+        }
+        
+    </script>
+
+</body>
+
+</html>
