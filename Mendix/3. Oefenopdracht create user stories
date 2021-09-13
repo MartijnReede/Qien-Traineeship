@@ -1,0 +1,54 @@
+Jimmy is een directeur van het LearnNow bedrijf en biedt verschillende trainingen aan. Hij gebruikt excel om de trainingen te managen.
+Het bedrijf is aan het groeien en hij wil een applicatie laten ontwikkelen om meer overzicht te creeeren voor alle cursussen. 
+
+<user>
+    - The director --> Jimmy.
+    - Teachers
+    - Students.
+
+<business value>
+
+    <Jimmy>
+        - Hij wil bijhouden welke trainingen hij geeft.
+        - Hij wil trainingen up-to-date kunnen houden. 
+        - Nieuwe trainingen toevoegen. 
+        - Leraren toewijzen aan trainingen. 
+        - Trainingen inplannen voor een bepaalde periode. 
+        - Zien wie er deelneemt aan welke trainingen. 
+        - Zien wanneer deelnemers een training volgen. 
+
+    <Teachers>
+        - Zien wanneer de lessen plaatsvinden waar ze les moeten geven. 
+        - Zien welke studenten er deelnemen in de les waarin de leeraar lesgeeft. 
+        - Persoonlijke informatie zien van studenten zodat er contact gezocht kan worden als bijvoorbeeld iemand te laat is. 
+
+    <Students>
+        - Overzicht zien van de beschikbare lessen.
+        - Zien welke lessen wanneer zijn ingepland. 
+
+<What>
+    Gebaseerd op wat er nodig is voor de users moeten we bedenken wat we kunnen creeren op hun problemen op te lossen. 
+
+    Voorbeeld: Wat is er nodig voor de director om de trainingen up-to-date te houden?
+        - Een overzicht van de trainingen.
+        - Een option to add, edit or delete courses. 
+        - Een gedetaileerde calender met wanneer elke cursus gehouden zal worden. 
+
+    Voorbeeld: Wat heeft de leraar nodig om leerlingen te contacten als ze te laat zijn? 
+        - Een overzicht met alle e-mail adressen van zijn studenten. 
+
+<outcome>
+    Gebaseerd op de user types en business values kunnen we user stories maken:
+        - As an administrator, I want to be able to add a new training, so that I can keep my trainings up-to-date. 
+        - As an administrator, I want to be able to edit a training, so that I can keep my trainings up-to-date.
+        - As a teacher, I need to be able to view the email address of each participant, so that I can send them their certificates of participation. 
+
+
+Een wireframe maken: 
+    - Dit is een visueel idee van hoe de app er uit moet komen te zien. Dit hoeft niet perfect en 100% compleet
+    te zijn, het gaat er vooral om dat het een goed idee geeft van hoe de app er uiteindelijk uit gaat zien.
+
+
+SPRINT backlog vs backlog:
+    - Tijdens de planning wordt bepaald welke backlog items er in de sprint backlog worden geplaatst. Deze sprint backlog
+    zal worden uitgevoerd tijdens de sprint.

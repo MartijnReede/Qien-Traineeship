@@ -1,0 +1,21 @@
+Layouts in Mendix zijn opgebouwd op de volgende manier: 
+    - Layout grid
+    - Row
+    - Column
+    - Textfield
+
+    OF 
+
+    - Layout grid
+    - Row
+    - Column
+    - Container
+        - Button1
+        - Button2
+    
+    Containers:
+        - Gebruik je om bijvoorbeeld widgets te groeperen of een border te geven. 
+        - Je kan groepen ook bijvoorbeeld dezelfde styling geven. 
+        - Kunnen gebruikt worden om extra ruimte om een knop heen te creeren. 
+        
+

@@ -1,0 +1,28 @@
+In Mendix:
+    Stap 1: Capture.
+        - Het creeren van stories (use-cases);
+        - Het plannen van een sprint.
+    Stap 2: Development.
+        - Het het ontwikkelen van de use-cases.
+    Stap 3: Deployment.
+        - Het deployen van een application increment. 
+    Stap 4: Feedback.
+        - Users geven feedback op de increment en leveren dit aan bij de Product Owner. 
+        - De product owner bepaald welke nieuwe use-cases ontwikkeld moeten worden.
+        - Start weer bij stap 1. 
+
+Product Owner:
+    - Bepaald in welke volgorde er gewerkt word aan use-cases uit de backlog. 
+
+Scrum master:
+    - Zorgt dat de scrum werkwijze gehandhaafd wordt. 
+    - Als het team niet verder kan door factoren waar zij niets aan kunnen doen, dan moet de scrum master dit oplosen. 
+
+Het maken van stories:
+    Stap 1: Uitzoeken wie de gebruiker is van een bepaalde functionaliteit. <user>
+    Stap 2: Uitzoeken wat de gebruiker met deze functionaliteit moet kunnen doen? <business value>
+    Stap 3: Hoe kan ik als developer de user helpen om zijn doel te bereiken? <what>
+
+    Opmaak van een story:
+    As a <user>, I want <what>, so that <business value>.
+
