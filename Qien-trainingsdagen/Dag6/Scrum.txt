@@ -1,0 +1,400 @@
+Agile is het raamwerk en bestaat uit meerdere methodes
+    - Scrum is er daar één van.
+
+Waterval methode:
+    - Praten met alle stakeholders, backlog items opstellen. 
+    - Met wie ga je het maken / welke kennis is nodig. 
+    - Op basis van de behoefte een goed plan maken.
+    - Werk uitvoeren. 
+
+Waarom mislukken een software project?
+    - Als een project 3 jaar duurt zitten we na 3 jaar met verouderde eisen. 
+    - Hun kijk op de app is misschien wel veranderd in de afgelopen tijd. 
+    - Slechte betrokkenheid van de belangrijkste stakeholders.
+    - Prioriteiten wijzigen gedurende het project. 
+    - Onrealistische tijdschema's.
+
+Nadelen van waterval methode:
+    - Slecht in inspelen op veranderingen.
+    - Lastig schatten (veel te ver vooruit denken). 
+    - Gescheiden rollen (bijvoorbeeld: developers, ontwerpers, deze groepen werken niet met elkaar. Er moet dus veel documentatie zijn om alle partijen
+    uit te leggen wat er precies gemaakt is). 
+    - Overdocumentatie zie bovenstaande punt. 
+
+Agile: 
+    - Lenig, behendig, flexibel, wendbaar.
+
+Waarom Agile? 
+    - Niet alle wensen en eisen zijn bekend. 
+    - Om snel te kunnen schakelen in een dynamische omgeving.
+    - Om de opdrachtgever meer regie te geven over het ontikkeltraject. 
+    - Beterek communicatie tussen ontwikkelaars en opdrachtgevers. 
+    - Om de ontwikkelaars de kans te bieden werkende producten op te leveren.
+    - Het ontwikkeltraject voordurend bij de kunnen sturen. 
+
+waterval methode = schijnzekerheid. 
+
+
+Agile Manifesto:
+    - Mensen en hun onderlinge actie zijn belangrijker dan processen en tools
+    - werkende software is belangrijker dan allesomvattende documentatie.
+    - Samenwerking met de klant is belangrijker dan contractonderhandelingen. 
+    - Inspelen op verandering is belangrijker dan het volgen van een plan. 
+
+!!!!!!!!!!!!!!!!BELANGRIJK: Zelforganiserend vermogen of Multidiciplinair werken kom je veel tegen, is vaak het goede antwoord!! Maar NIET ALTIJD!
+Vaak lange stukken tekst. 
+
+Kenmerken van Agile:
+    - Multidiciplinair (?) samenwerking in kleine teams.
+    - Focus op belanghebbende
+    - Werkende producten op korte termijn
+    - Flexibiliteit.
+    - Vertrouwen (aangezien het scrum team zelf hun werk inpland).
+    - Goed communiceren. 
+    - Timeboxing bijvoorbeeld daily stand-up max 15 minuten. 
+    - Iteratief ontwikkelen. 
+
+Wanneer Agile ontwikkeling?
+    - Wanneer de eisen nog vaag en veranderlijk zijn.
+    - Zelforganiseren kan alleen als mensen dat ook kunnen. 
+    - Communicatie moet mogelijk zijn. 
+    - Mogelijkheid om in kleine en toegewijde teams te werken. 
+
+MAXIMAAL 10 PERSONEN IN EEN SCRUM TEAM!
+
+Lichtgewicht en middengewicht 
+    - lichtgewicht: beschrijft alleen de hoofdlijnen van de werkwijze in projecten verloopt.  SCRUM is lichtgewicht.
+    - middengewicht: Geeft heel specifiek aan welke rollen wanneer welke technieken toepassen.
+
+Stakeholders:
+    - Degene die we vergeten zijn (de meest lastige stakeholder).
+    - Ook mensen die denken dat ze beinvloed worden door jouw systeem. 
+    - Ook beheerders.
+    - Opdrachtgever
+    - Gebruiker
+    - Bouwers
+    - Klanten
+    - Architecten
+    - Specialisten
+    - Toezichthouders
+    - Etc. 
+
+Iedereen die NIET tot het scrum team behoord is een stakeholder. 
+
+DevOps --> Beheeerders en bouwers zitten tijdens de ontwikkeling in één team. De beheerders bouwen niet, maar zijn wel betrokken. 
+
+Methoden, technieken en aandachtspunten:
+        Pair programming:
+            - Driver: schrijft code achter de computer
+            - Navigator: zit er naast en reviewt de code. Soms wisselen ze van rol.
+        Voordelen van pair programming: Kennis delen, sneller oplossen, ontrafelen complexiteit. 
+
+        Side by side programming:
+            - Twee ontwikkelaars werken aan dezelfde code, elk op hun eigen computer. 
+            - Ze analyseren samen alternatieven en kiezen een oplossing. 
+            - Taken worden onderling verdeeld. 
+
+Extreme programming XP:
+    - Veel korte ontwikkelingssycli.
+    - Reduceert kosten
+    - Wijzigingen zijn onontkombaar, natuurlijk, wenselijk. 
+    - Principes: uitgaan van eenvoud, omarmen van veranderingen.
+
+Crystal clear:
+    - Frequent leveren van bruikbare code.
+    - 
+
+Kanban: 
+    - Productieprocessen optimalliseren. 
+    - Gaat uit van de methode: Hoeveel voorraad is nodig. Just in time (als de voorraad bijna leeg is wordt er nieuwe voorraad geleverd).
+    - Met een kanban bord zie je waar de bottleneck zit. 
+
+Methoden, technieken en aandachtspunten:
+    Werkruimte:
+        - Co-locatie. Werken bij de klant op kantoor. Je hebt namelijk de PO nodig en die moet weer overleggen met de stakeholders. 
+        - Rustige omgeving
+        - Face to face communicatie mogelijk.
+        - Korte afstand, snelle afstemming. 
+    
+    Osmotic communicatie    
+        - Meeluisteren met de mensen om je heen en daarvan leren. 
+        -Transparantie!
+
+Effectieve manier van communicatie:
+    - Face to face.
+    - Tekeningen maken
+
+Minst effectief:
+    - Gedetailleerde documentatie. 
+
+Escaped defects:
+    - Dingen die we over het hoofd hebben gezien die toch niet helemaal in orde zijn op het moment dat de klant met het product aan de slag gaat. 
+    - Als dit vaak gebeurt kan het zijn dat je kwaliteitscontrole niet helemaal in orde is. 
+
+Prioritering:
+    Moscow prioritering:
+        - Must have.
+        - Should have.
+        - Could have.
+        - Wont have for now.
+    Refactoring:
+        - Iedereen voert een verbetering in de programmatuur door. 
+        - Bijvoorbeeld je verfd je huis met goedkope verf, een jaar later is er onderhoud nodig.
+
+Continuous integration:
+    - Een centrale branch die werkt. 
+
+Daily stand-up meeting:
+    - voortgangsbespreking.
+    - 10 a 15 min.
+    - 3 vragen:
+        - Wat heb ik gisteren gedaan omons doel te bereiken
+        - Waaraan werk ik vandaag?
+        - Welke uitdagingen of belemmeringen ben ik tegengekomen en heb ik hulp nodig?
+
+Configuration management:
+    - Welk onderdeel is momenteel in omloop. 
+    - Welke versie draait momenteel bij de klant. 
+    - Welke versie van losse- aan elkaar gekoppelde producten is er momenteel in gerbuikt. 
+
+Niko niko kalender:
+    - Geeft weer wat de stemming is van het team. 
+
+---------------------------------------------------------------------------------------------------------
+
+EXAMEN TIP: Bij vierkantjes zijn één OF meerdere antwoorden goed. 
+
+Overal kan scrum voor toegepast worden. Er zijn geen beperkingen!! Examenvraag!
+LICHTgewicht framework. 
+
+Simpel om te begrijpen maar moeilijk om toe te passen.
+
+Uitgangspunten: 
+    - Transaparantie: Alles met betrekking tot de ontwikkelinge van het product is transaparant. Slaat ook op onze manier van werken. Niets is geheim.
+    -  Inspectie: Scrum inspecteur kan iedereen zijn. Hoevaak inspecteren we? Zo vaak als maar mogelijk is zonder dat het het werk in de weg staat. 
+    - Aanpassing: Wanneer gaan we het aanpassen? Zo snel mogelijk zodat er geen verdere schade ontstaat. 
+
+Doelstelling:
+    - Opleveren werkende resultaten. Hoeft niet geimplementeerd te worden maar mag wel. 
+    - Iteratief opleveren en aanpassen
+    - betrekken van alle stakeholders.
+
+Gebaseerd op Empirisme en lean werken. Gebaseerd op ervaring!
+
+SCRUM OVERZICHT ------------------
+
+Rollen 3 stuks:
+    - Product owner 
+    - Scrum master
+    - Teamlid
+        - DE REST IS GEEN STAKEHOLDER en dus GEEN Teamlid:
+
+Artefacts
+    - Product backlog
+    - Sprint backlog
+    - Increment
+
+Commitments (wat willen we bereiken):
+    - Product doel (hoort bij product backlog).
+    - Sprint doel (hoort bij sprint backlog).
+    - Definition of done (Hoort bij increment). Def of done = kwaliteitseisen, wanneer zijn we klaar?
+
+Gebeurtenissen:
+    - Sprint
+    - Sprint pllanning
+    - Daily Scrum
+    - Sprint review
+    - Sprint retrospective.
+
+Hulpmiddelen
+    - Brun down chart
+    - Velocity
+    - Scrum board
+    - Def of ready
+    - Plannig poker
+
+SCRUM TEAM -------------------------
+
+    - Product owner
+    - Scrum master
+    - Ontwikkelaars (Development) We hebben het niet meer over het Development Team, alleen over het scrum Team.
+                    - Binnen het team hebben we dus geen andere teams of functie-aanduidingen. 
+                    - Dit maakt het makkelijker om de verantwoordelijkheid bij het gehele team te houden. 
+
+    Scrum team: max 10 personen. 
+    Elke vraag die zegt: De CEO bepaald, of de Scrum master bepaald --> NEE het TEAM bepaald, zelf organiserend vermogen.  
+
+    - Multidiciplinair: 
+    - Zelforganiserend.
+
+    Het ontwikkelteam: 
+        - De scrum master kan best een bouwer zijn. In het examen moeten we goed kijken naar de context van de vraag, welke pet heeft iemand op. 
+        - Bewaken de voortgang richting het eind van de sprint.
+
+    De PO bewaakt de voorgang van het hele project!
+
+    Scrum values:
+        - Committment aan het halen van doelen.
+        - Focus is op het werk van de sprint. 
+        - Open over het werk 
+
+        Commitment, focus, openheid, moed, respect!
+
+        EXAMEN TIP: Welke scrum values? Vaak staan er begrippen tussen die geen scrum values zijn en één met alleen scrum values/
+
+
+    
+    Product Backlog: 
+        - Geprioriteerde lijst met AL het werk dat NOG gedaan moet worden om een product of een nieuwe release uit te brengen. 
+        - De PO is verantwoordelijk voor het beheren en priotieren van de items. 
+        - De lijst bevat PBI's product backlog items. 
+        - Bevat functionele wensen, dit zijn ook wel USER STORIES.
+        - Niet-functionele eisen: bijvoorbeeld, ik wil dat het systeem werkt binnen 1 seconde. Dit voegt aan de functionaliteit niets toe.
+        - Gevonden problemen / bugs / issues.
+        - Belangrijkste items staan bovenaan. 
+
+    Product backlog items prioriteren:
+        - Wordt geprioriteerd hoe de PO dat wil.
+        - Geprioriteerd op basis van de toegevoegde waarde. 
+        - Gedetailleerde items staan vaak bovenaan.
+        - Niet gedetailleerde grove items staan vaak onderaan. 
+
+    Voorbeelden van prioriteren: MAG PO ZELF BEDENKEN, DIT ZIJN VOORBEELDEN!
+        - Waarde (benefits).
+        - Kosten (costs).
+        - Risico's (risks).
+
+    Product owner:
+        - De persoon van de inhoud. 
+        - Vaste aanspreekpunt, voor de bouwers naar de organisatie, en van de organisatie naar de bouwers. 
+        - één persoon!
+        - PO is sturende factor.
+        - Heeft een duidelijk beeld van het te ontwikkelen systeem. 
+        - Het moet iemand van de klant-organisatie zijn! Hoeft geen verstand te hebben van ontwikkelen of scrum. 
+    
+    Verschil project manager en PO. 
+        - PM =  Benadrukt kosten van verandering, stuurt op geld, tijd en perkt risico in. 
+        - PO = Beslist en beinvloedt de scope door kennis van het domein en de waarde en prioriteit van requirments. 
+
+    De scrum master:
+        - Bemoeit zich NIET met de inhoud, alleen met het proces. 
+    
+    Als we iets gaan maken wat we nog niet hebben verkocht dan kunnen we geen PO vinden bij de klant. In dat geval kunnen we een domeinexpert
+    inschakelen. Dit is iemand die de doelgroep goed kent. 
+
+    De domeinexpert zal dan helpen om de juiste items te selecteren en dat deze ook juist gerealiseerd worden. 
+
+    Product backlog refinement, MAX 10% van de werktijd. 
+        - Het onderhoud aan de product backlog. 
+        - Verfijnen van scahttingen
+        - Dieper uitwerken van beschrijvingen
+        - eisen verduidelijken
+        - Herprioriteren
+        - Verantwoordelijkheid ligt bij de PO, in de prakrijk werken de developers daar vaak aan mee. 
+
+    Product doel:
+        - De elevator pitch van het product. Het commitment van het product backlog. 
+        - De stip aan de horizon. Kan iets veranderen, maar het geeft het lange termijn doel weer. 
+        - WAAROM maken we het, voor wie, en welk probleem lost het op? Hoe ziet het er uit? 
+        - Past bij voorkeur op 1 A4
+        - Laat ruimte voor creativiteit
+        - Is inspirerend. 
+        - Redelijk stabiel.
+        - Stel je op met zo veel mogelijk stakeholders op. Moet geen boodschappenlijstje worden van PBI'samen
+    
+    Stakeholder management: 
+        - Is de verantwoordelijkheid van de PO. 
+        - 2 meetings waar ze bij MOGEN zijn, is geen vanzelfsprekendheid. Ze worden uitgenodigd en komen niet zomaar binnen wandelen. 
+            - Sprint planning --> uitleg/toelichting geven over bepaalde onderwerpen.
+            - Sprint review -->  feedback geven.
+
+    Release is vaak een verzameling sprints die gedeployed worden. 
+        - Feestje van de PO. Die is namelijk verantwoordelijk voor voor de productvoortgang. 
+
+    De scrum master:
+        - Geeft GEEN leiding. hij legt uit, helpt, coachen etc. 
+        - Is GEEN projectmanager, mag NIET gecombineerd worden met PO. 
+        - Zorgt dat het team goed aan het werk kan. 
+        - Zorgt dat iedereen scrum begrijpt. 
+        - Als de organisatie heel erg bekend is met scrum zijn scrum masters niet meer zo erg nodig. 
+        - Zorgen dat alle scrum gebeurtenissen plaatsvinden.
+        - Zorgen dat alle scrum gebeurtenissen getimeboxed zijn.
+
+    EXAMENVRAAG:
+        - Managed de scrum master niets? WEL, hij managed het scrum proces!
+
+
+    Scrum master HELPT de PO:
+        - De PO hoeft helemaal niet op de hoogte te zijn van scrum. Hij moet hier dus bij geholpen hebben.
+
+        EXAMEN: Als je het niet begrijpt: multidiciplinair en zelforganiserend.!
+
+        Bij de daily scrum wordt het scrumboard bijgewerkt!
+    
+    Bij User stories:
+        - Het zijn de USERS die moeten bepalen wat ze nodig hebben. Dit doe je door mensen te interviewen. 
+
+    Definition of ready = wanneer is een backlog item genoeg gespeicificeerd zodat we eraan kunnen werken. Het is een checklist!
+    Deinifition of done = Wanneer voldoet de staat van het werk aan de kwaliteitseisen om het als "klaar" te beschouwen. 
+
+
+    Spikes: 
+        - Onzekerheden over wat te ontwikkelen vragen om nader onderzoek.
+            - Technische Spikes.
+            - Functionele Spikes. 
+
+    Sprint:
+        - Focus op een increment / deelproduct!
+        - Duurt 1 tot 4 weken. Kiezen bijna altijd voor dezelfde lengte!
+    
+    Sprint bestaat uit:
+        - SPrint planning
+        - Daily Scrum
+        - ontwikkeling
+        - Spring review
+    
+    Scrum master is WEL aanwezig bij de planning. 
+
+    Als onzekerheid afneemd noemen we dat Cone of uncertainty. In het begin van het project is veel onzeker, naarmate we verder gaan in het
+    project worden steeds meer dingen zeker. 
+
+    - Sprint backlog is van de bouwers.
+    
+
+    De bouwers ontwikkelen de DoD over het algemeen, tijdens de retrospective houd het hele team hem tegen t licht.
+
+    De burndown chart = Moet hoeveel punten zijn we begonnen en hoeveel punten hebben we nog te gaan. Een voortgangsgrafiek in storypoints. 
+    BurnUp chart = Hoeveel punten zijn er behaald en hoeveel punten zijn er in scope (zijn er bijvoorbeeld items toegevoegd of weggehaaald).
+
+    VELOCITY = puur een stukje statistiek. Hoeveel punten hebben wij weten te realiseren. Dit vormt een hulpmiddel voor de planning. 
+               Het geeft overigens geen garantie voor de toekomst. Yesterday's weather is de term voor de snelheid van de vorige sprint. 
+
+    Sprint review of sprint demo is hetzelfde! Zorg dat het voor stakeholders interessant is!
+            - Timebox van 4 uur per maand!
+            - Feedback komt op de product backlog terecht!
+            - Voor de PO een zeer belangrijk moment!
+
+
+Sprint backlog is ENKEL van de developers!
+
+
+    Een INCREMENT is de waarde van een sprint en alle voorgaande sprints tezamen. 
+    De increment is mogelijk direct bruikbaar, maar het kan ook worden opgespaard tot er een release mogelijk is. 
+
+
+    Technical dept: UITZOEKEN!!!
+    Huiswerk:  NEXUS GUIDE! Meerdere teams paralel te laten werken 3-9 teams. 
+    Kan iemand van SCRUM en NEXUS team werken? JA.
+    Oefenexamens maken op scrum.org! --> Scrum open en Product owner bij Open assessments!
+    Wat is cross-functionality?
+
+
+
+
+
+    
+
+        
+
+
+

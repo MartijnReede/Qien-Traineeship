@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 20px;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    padding-top: 25px;
+    margin-bottom: 15px;
+}
+
+.col-25 {
+    float: left;
+    width: 15%;
+    margin-top: 6px;
+}
+  
+.col-75 {
+    float: left;
+    width: 85%;
+    margin-top: 6px;
+}
+
+div {
+    overflow: auto;
+}
+
+.container {
+    min-width: 700px;
+}
+
+.forecast {
+    display: center;
+    justify-content: left;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    width: 375px;
+    display: inline-block;
+    border: solid;
+    margin-right: 10px;
+    padding: 10px;
+
+}
+
+.col-25Card {
+    float: left;
+    width: 35%;
+    margin-top: 6px;
+}
+  
+.col-75Card {
+    float: left;
+    width: 65%;
+    margin-top: 6px;
+}
