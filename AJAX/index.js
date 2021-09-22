@@ -24,7 +24,8 @@
                     const weather = JSON.parse(xhr.responseText);
                     displayWeather(weather);
                 } else {
-                    console.log("Oops, something went wrong!");
+                    alert(`Sorry, we can´t find ${city}.`);
+                    return;
                 }
             }
         }
@@ -102,8 +103,6 @@
     }
 
     function createForecastCard(day){
-
-        console.log(day);
 
         const card = document.createElement("div");
         card.setAttribute("class", "card");
